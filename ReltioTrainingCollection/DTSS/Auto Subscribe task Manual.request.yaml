@@ -1,0 +1,32 @@
+$kind: http-request
+url: "{{serviceURL}}/dtss/subscription/task"
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{accessToken}}
+body:
+  type: text
+  content: "{\r
+
+    \  \"@type\": \"manual_start\",\r
+
+    \  \"matchUrls\" : [\"configuration/entityTypes/HCO/matchGroups/Rule13\"],\r
+
+    \  \"entity_type\": \"configuration/entityTypes/HCO\",\r
+
+    \  \"dataTenantId\": {\r
+
+    \    \"id\": \"hmcyo4cu\"\r
+
+    \  },\r
+
+    \  \"customerTenantId\": {\r
+
+    \    \"id\": \"jas88zr17\"\r
+
+    \  },\r
+
+    \  \"status\": \"SCHEDULED\"\r
+
+    }"
+order: 8000

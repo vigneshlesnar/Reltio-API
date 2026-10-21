@@ -1,0 +1,12 @@
+$kind: http-request
+url: "{{serviceURL}}/dtss/subscription"
+method: DELETE
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{accessToken}}
+  DataTenant: T74szvy2aXewh59
+  CustomerTenant: B5Q73vyMGxt0EHE8
+body:
+  type: text
+  content: ""
+order: 10000

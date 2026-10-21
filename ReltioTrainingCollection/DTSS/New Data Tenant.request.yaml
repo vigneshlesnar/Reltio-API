@@ -1,0 +1,38 @@
+$kind: http-request
+url: "{{serviceURL}}/dtss/tenants/dataTenants"
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{accessToken}}
+body:
+  type: text
+  content: "  {\r
+
+    \    \"tenant_id\": {\r
+
+    \      \"id\": \"MWmAQ40VedLCq44\"\r
+
+    \    },\r
+
+    \    \"oauth_end_point_url\": \"https://auth.reltio.com/oauth/token\",\r
+
+    \    \"api_url\": \"https://pilot.reltio.com/reltio/api\",\r
+
+    \    \"label\": \"DT:IMS\",\r
+
+    \    \"name\": \"DT_IMS\",\r
+
+    \      \"client_password\": \"makita\",\r
+
+    \  \"oauth_password\": \"T2zAyT4RW\",\r
+
+    \    \"cassandra_host\": \"psc-02-data01.pilot.reltio.com,psc-02-data02.pilot.reltio.com,psc-02-data03.pilot.reltio.com,psc-02-data04.pilot.reltio.com,psc-02-data05.pilot.reltio.com,psc-02-data06.pilot.reltio.com,psc-02-data07.pilot.reltio.com,psc-02-data08.pilot.reltio.com\",\r
+
+    \    \"cassandra_keyspace\": \"ReltioLillySystem\",\r
+
+    \    \"cassandra_cluster\": \"psc-02-data\",\r
+
+    \    \"cassandra_replication_factor\": 3\r
+
+    \  }"
+order: 5000

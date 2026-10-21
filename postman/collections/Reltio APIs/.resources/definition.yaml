@@ -1,0 +1,46 @@
+$kind: collection
+name: Reltio APIs
+scripts:
+  - type: beforeRequest
+    language: text/javascript
+    code: |-
+      // Auto-refresh Reltio client access token before each request.
+      // Skips the auth token endpoint itself to avoid loops.
+      const reqUrl = pm.request.url.toString();
+      if (reqUrl.indexOf('/oauth/') !== -1) {
+          return;
+      }
+
+      const accessToken = pm.environment.get('accessToken');
+      const tokenExpiry = pm.environment.get('accessTokenExpiry');
+      const now = Date.now();
+
+      // Fetch a new token if missing or within 60 seconds of expiry
+      if (!accessToken || !tokenExpiry || now >= (parseInt(tokenExpiry) - 60000)) {
+          const clientId = pm.environment.get('client_id');
+          const clientSecret = pm.environment.get('client_secret');
+          const urlAuth = pm.environment.get('urlAuth');
+          const encoded = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
+
+          pm.sendRequest({
+              url: urlAuth + 'token',
+              method: 'POST',
+              header: {
+                  'Authorization': 'Basic ' + encoded,
+                  'Content-Type': 'application/x-www-form-urlencoded'
+              },
+              body: {
+                  mode: 'urlencoded',
+                  urlencoded: [{ key: 'grant_type', value: 'client_credentials' }]
+              }
+          }, function (err, res) {
+              if (!err && res.code === 200) {
+                  const data = res.json();
+                  pm.environment.set('accessToken', data.access_token);
+                  pm.environment.set('accessTokenExpiry', String(Date.now() + (data.expires_in * 1000)));
+                  console.log('[Auth] Token refreshed, expires in ' + data.expires_in + 's');
+              } else {
+                  console.error('[Auth] Token refresh failed:', err ? err.message : res.text());
+              }
+          });
+      }

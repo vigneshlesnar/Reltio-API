@@ -1,0 +1,12 @@
+$kind: http-request
+url: "{{serviceURL}}/dtss/subscription/task/tiXku4MmWgacUFn_W3WKNMxqe9fFmTV_HCP_manual_start/history?start_date=1426506919900&end_date=1426506919900"
+method: GET
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{accessToken}}
+  DataTenant: tiXku4MmWgacUFn
+  CustomerTenant: W3WKNMxqe9fFmTV
+queryParams:
+  start_date: "1426506919900"
+  end_date: "1426506919900"
+order: 12000

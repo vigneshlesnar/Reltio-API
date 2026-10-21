@@ -1,0 +1,17 @@
+$kind: http-request
+url: https://mpe-01-lca-eu.reltio.com/api/{{tenant}}/actions
+method: POST
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    [{
+    "name": "WorkflowDCRService",
+    "type": "com.reltio.workflow.lca.lca.WorkflowDCRLifeCycleAction",
+    "module": "life-cycle-actions/eu-360/workflow/workflow-dcr-lca-service-jar-with-dependencies.jar",
+    "state": "active",
+    "description": "Workflow DCR action"
+    }]
+order: 9000

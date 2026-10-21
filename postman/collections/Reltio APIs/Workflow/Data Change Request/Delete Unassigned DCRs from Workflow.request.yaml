@@ -1,0 +1,14 @@
+$kind: http-request
+url: "{{workflowURL}}/workflow/{{tenant}}/processInstances"
+method: DELETE
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+  EnvironmentURL: https://mpe-01.reltio.com
+body:
+  type: text
+  content: |-
+    {
+        "type": "dataChangeRequestReview"
+    }
+order: 5000

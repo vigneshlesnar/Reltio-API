@@ -1,0 +1,52 @@
+$kind: http-request
+url: "{{dnbconnector}}/dnb/monitoring/registration"
+method: POST
+headers:
+  - key: Authorization
+    value: Bearer {{accessToken}}
+  - key: Content-Type
+    value: application/json
+    description: Required
+  - key: EnvironmentUrl
+    value: https://dev.reltio.com
+    description: Required
+  - key: TenantId
+    value: "{{tenant}}"
+    description: Required
+  - key: DnB-User
+    value: ""
+    disabled: true
+  - key: DnB-Password
+    value: ""
+    disabled: true
+  - key: DnB-Token
+    value: ""
+    disabled: true
+  - key: DnB-Registration
+    value: ""
+    description: Required
+  - key: DnB-Registration-Op
+    value: ""
+    disabled: true
+    description: add/remove
+  - key: cronExpression
+    value: ""
+    disabled: true
+body:
+  type: text
+  content: "\r
+
+    \    \r
+
+    \      \r
+
+    {\r
+
+    \  \"exportTask\": {\r
+
+    \      \"filter\": \"equals(type,configuration/entityTypes/Organization) and equals(attributes.Name,'KPMG LLP')\"\r
+
+    \    }\r
+
+    \  }\r\n"
+order: 4000

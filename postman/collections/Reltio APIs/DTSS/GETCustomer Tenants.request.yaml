@@ -1,0 +1,7 @@
+$kind: http-request
+url: "{{serviceURL}}/dtss/tenants/customerTenants"
+method: GET
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{accessToken}}
+order: 2000

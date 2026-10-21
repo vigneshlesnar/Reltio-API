@@ -1,0 +1,17 @@
+$kind: http-request
+description: "[https://docs.reltio.com/dnbapi/dnbrtgetorgmatch.html](https://docs.reltio.com/dnbapi/dnbrtgetorgmatch.html)"
+url: "{{dnbconnector}}/config/tenants"
+method: GET
+headers:
+  - key: Authorization
+    value: Bearer {{accessToken}}
+  - key: Content-Type
+    value: application/json
+    description: Required
+  - key: EnvironmentUrl
+    value: https://dev.reltio.com/
+    description: Required
+  - key: tenantID
+    value: "{{tenant}}"
+    description: Required
+order: 1000

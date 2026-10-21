@@ -1,0 +1,27 @@
+$kind: http-request
+url: https://{{env}}.reltio.com/jobs/export/{{mdmTenant}}/entities?fileFormat=json&dateFormat=readable
+method: POST
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+queryParams:
+  - key: select
+    value: attributes.AddressType,attribute.Active,createdTime
+    disabled: true
+  - key: fileFormat
+    value: json
+  - key: dateFormat
+    value: readable
+  - key: filter
+    value: exists(attributes.Active)
+    disabled: true
+body:
+  type: text
+  content: |-
+    {
+        "includeType": [
+            "configuration/entityTypes/Contact"
+        ],
+        "ovOnly": true
+    }
+order: 2000

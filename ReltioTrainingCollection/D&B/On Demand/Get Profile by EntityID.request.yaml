@@ -1,0 +1,46 @@
+$kind: http-request
+description: "[https://docs.reltio.com/dnbapi/dnbrtgetfamilytree.html](https://docs.reltio.com/dnbapi/dnbrtgetfamilytree.html)"
+url: "{{dnbconnector}}/dnb/getDetailedProfile?entityURI=entities/1BGfXLUR"
+method: GET
+headers:
+  - key: Authorization
+    value: Bearer {{accessToken}}
+  - key: Content-Type
+    value: application/json
+    description: Required
+  - key: EnvironmentUrl
+    value: https://dev.reltio.com/
+    description: Required
+  - key: tenantID
+    value: "{{tenant}}"
+    description: Required
+  - key: Reltio-Batch-Type
+    value: put
+    disabled: true
+  - key: DnB-Ftp
+    value: https://plus.dnb.com
+    disabled: true
+  - key: DnB-Path
+    value: /puts
+    disabled: true
+  - key: DnB-User
+    value: DnBKey
+    disabled: true
+  - key: DnB-Password
+    value: DnBSecret
+    disabled: true
+  - key: DnB-Token
+    value: DnBToken
+    disabled: true
+  - key: Reltio-User
+    value: ServiceAccount
+    disabled: true
+  - key: Reltio-Password
+    value: ReltioPassword
+    disabled: true
+  - key: product
+    value: cmpelk
+    disabled: true
+queryParams:
+  entityURI: entities/1BGfXLUR
+order: 2000

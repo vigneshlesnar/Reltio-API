@@ -1,0 +1,10 @@
+$kind: http-request
+description: "[https://docs.reltio.com/matchesapi/unmarknotmatchentities.html](https://docs.reltio.com/matchesapi/unmarknotmatchentities.html)"
+url: "{{tenantURL}}/entities/1CmizKzU/_notMatch?uri=1CmigQsW"
+method: DELETE
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+queryParams:
+  uri: 1CmigQsW
+order: 6000

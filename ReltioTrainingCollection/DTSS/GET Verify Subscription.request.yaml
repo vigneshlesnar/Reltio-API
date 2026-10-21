@@ -1,0 +1,9 @@
+$kind: http-request
+url: "{{serviceURL}}/dtss/subscription/verifySubscription"
+method: GET
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{accessToken}}
+  CustomerTenant: "{{tenant}}"
+  DataTenant: tc5pw0cRebjxL8H
+order: 16000

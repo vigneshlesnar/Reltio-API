@@ -1,0 +1,15 @@
+$kind: http-request
+description: "[https://docs.reltio.com/entitiesapi/deleteentity.html](https://docs.reltio.com/entitiesapi/deleteentity.html)"
+url: "{{tenantURL}}/entities/_deleteByUris"
+method: POST
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+queryParams:
+  - key: mode
+    value: hard
+    disabled: true
+body:
+  type: json
+  content: '["entities/<ID1>", "entities/<ID1>", "entities/<ID1>"]'
+order: 12000

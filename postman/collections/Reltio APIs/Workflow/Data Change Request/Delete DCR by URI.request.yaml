@@ -1,0 +1,7 @@
+$kind: http-request
+url: "{{tenantURL}}/changeRequests/4t3pv8E"
+method: DELETE
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+order: 7000

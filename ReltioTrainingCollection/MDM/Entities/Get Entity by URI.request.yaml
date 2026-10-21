@@ -1,0 +1,8 @@
+$kind: http-request
+description: Command to GET a Single Entity using its URI
+url: "{{tenantURL}}/entities/<EntityID>"
+method: GET
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+order: 1000

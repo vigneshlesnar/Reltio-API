@@ -1,0 +1,20 @@
+$kind: http-request
+url: "{{toolsURL}}/matching/matchTokens"
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "fuzzy": true,
+        "values": [
+            "isabelle",
+            "isabela",
+            "isabel",
+            "Devoti",
+            "Devat"
+        ],
+        "matchTokenClass": {
+            "class": "com.reltio.match.token.DoubleMetaphoneMatchToken"
+        }
+    }
+order: 3000

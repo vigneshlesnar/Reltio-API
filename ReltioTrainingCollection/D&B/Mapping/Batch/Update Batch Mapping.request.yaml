@@ -1,0 +1,1143 @@
+$kind: http-request
+description: "[https://docs.reltio.com/dnbapi/dnbsavebatchmapping.html](https://docs.reltio.com/dnbapi/dnbsavebatchmapping.html)"
+url: "{{dnbconnector}}/config/profiles/{{dnbProfile}}/mappings/match?plus=true"
+method: POST
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/jon
+queryParams:
+  - key: product
+    value: cmpelk
+    disabled: true
+  - key: plus
+    value: "true"
+body:
+  type: json
+  content: "[\r
+
+    \    {\r
+
+    \        \"operation\": \"shift\",\r
+
+    \        \"spec\": {\r
+
+    \            \"attributes\": [\r
+
+    \                \"attributes\",\r
+
+    \                \"nums\"\r
+
+    \            ],\r
+
+    \            \"uri\": {\r
+
+    \                \"*/*\": {\r
+
+    \                    \"$(0,2)\": \"uri\"\r
+
+    \                }\r
+
+    \            },\r
+
+    \            \"type\": {\r
+
+    \                \"*/*/*\": {\r
+
+    \                    \"$(0,3)\": \"type\"\r
+
+    \                }\r
+
+    \            }\r
+
+    \        }\r
+
+    \    },\r
+
+    \    {\r
+
+    \        \"operation\": \"shift\",\r
+
+    \        \"spec\": {\r
+
+    \            \"uri\": \"uri\",\r
+
+    \            \"type\": \"type\",\r
+
+    \            \"attributes\": \"attributes\",\r
+
+    \            \"nums\": {\r
+
+    \                \"Addresses\": {\r
+
+    \                    \"*\": {\r
+
+    \                        \"value\": {\r
+
+    \                            \"AddressType\": {\r
+
+    \                                \"*\": {\r
+
+    \                                    \"lookupCode\": {\r
+
+    \                                        \"Shipping\": {\r
+
+    \                                            \"#BUSINESS\": \"attributes.Shipping[]\"\r
+
+    \                                        },\r
+
+    \                                        \"Billing\": {\r
+
+    \                                            \"#BL\": \"attributes.Billing[]\"\r
+
+    \                                        }\r
+
+    \                                    }\r
+
+    \                                }\r
+
+    \                            }\r
+
+    \                        }\r
+
+    \                    }\r
+
+    \                }\r
+
+    \            }\r
+
+    \        }\r
+
+    \    },\r
+
+    \    {\r
+
+    \        \"operation\": \"modify-overwrite-beta\",\r
+
+    \        \"spec\": {\r
+
+    \            \"attributes\": {\r
+
+    \                \"BillingSize\": \"=size(@(1,Billing))\",\r
+
+    \                \"ShippingSize\": \"=size(@(1,Shipping))\",\r
+
+    \                \"TotalSize\": \"=size(@(1,Addresses))\",\r
+
+    \                \"PhoneSize\": \"=size(@(1,Phone))\"\r
+
+    \            }\r
+
+    \        }\r
+
+    \    },\r
+
+    \    {\r
+
+    \        \"operation\": \"shift\",\r
+
+    \        \"spec\": {\r
+
+    \            \"uri\": \"uri\",\r
+
+    \            \"type\": \"type\",\r
+
+    \            \"attributes\": {\r
+
+    \                \"TotalSize\": {\r
+
+    \                    \"1\": {\r
+
+    \                        \"@(2,Addresses)\": {\r
+
+    \                            \"*\": {\r
+
+    \                                \"value\": {\r
+
+    \                                    \"#0\": \"Address[0].score[]\",\r
+
+    \                                    \"AddressLine1\": {\r
+
+    \                                        \"*\": {\r
+
+    \                                            \"value\": \"Address[0].AddressLine1[]\"\r
+
+    \                                        }\r
+
+    \                                    },\r
+
+    \                                    \"AddressLine2\": {\r
+
+    \                                        \"*\": {\r
+
+    \                                            \"value\": \"Address[0].AddressLine2[]\"\r
+
+    \                                        }\r
+
+    \                                    },\r
+
+    \                                    \"City\": {\r
+
+    \                                        \"*\": {\r
+
+    \                                            \"value\": \"Address[0].PrimaryTownName[]\"\r
+
+    \                                        }\r
+
+    \                                    },\r
+
+    \                                    \"POBox\": {\r
+
+    \                                        \"*\": {\r
+
+    \                                            \"value\": \"Address[0].POBox[]\"\r
+
+    \                                        }\r
+
+    \                                    },\r
+
+    \                                    \"Zip5\": {\r
+
+    \                                        \"*\": {\r
+
+    \                                            \"value\": \"Address[0].FullZipCode[]\"\r
+
+    \                                        }\r
+
+    \                                    },\r
+
+    \                                    \"PostalCode\": {\r
+
+    \                                        \"*\": {\r
+
+    \                                            \"value\": \"Address[0].FullPostalCode[]\"\r
+
+    \                                        }\r
+
+    \                                    },\r
+
+    \                                    \"StateProvince\": {\r
+
+    \                                        \"*\": {\r
+
+    \                                            \"value\": \"Address[0].TerritoryName[]\"\r
+
+    \                                        }\r
+
+    \                                    },\r
+
+    \                                    \"ISO3166-2\": {\r
+
+    \                                        \"*\": {\r
+
+    \                                            \"value\": \"Address[0].CountryISOAlpha2Code[]\"\r
+
+    \                                        }\r
+
+    \                                    },\r
+
+    \                                    \"Country\": {\r
+
+    \                                        \"*\": {\r
+
+    \                                            \"lookupCode\": \"Address[0].CountryISOAlpha2Code[]\",\r
+
+    \                                            \"value\": \"Address[0].Country[]\"\r
+
+    \                                        }\r
+
+    \                                    }\r
+
+    \                                }\r
+
+    \                            }\r
+
+    \                        }\r
+
+    \                    },\r
+
+    \                    \"*\": {\r
+
+    \                        \"@(2,ShippingSize)\": {\r
+
+    \                            \"1\": {\r
+
+    \                                \"@(4,Addresses)\": {\r
+
+    \                                    \"*\": {\r
+
+    \                                        \"value\": {\r
+
+    \                                            \"AddressType\": {\r
+
+    \                                                \"*\": {\r
+
+    \                                                    \"lookupCode\": {\r
+
+    \                                                        \"Shipping\": {\r
+
+    \                                                            \"@4\": {\r
+
+    \                                                                \"#5\": \"Address[&7].score[]\",\r
+
+    \                                                                \"AddressLine1\": {\r
+
+    \                                                                    \"*\": {\r
+
+    \                                                                        \"value\": \"Address[&9].AddressLine1[]\"\r
+
+    \                                                                    }\r
+
+    \                                                                },\r
+
+    \                                                                \"AddressLine2\": {\r
+
+    \                                                                    \"*\": {\r
+
+    \                                                                        \"value\": \"Address[&9].AddressLine2[]\"\r
+
+    \                                                                    }\r
+
+    \                                                                },\r
+
+    \                                                                \"City\": {\r
+
+    \                                                                    \"*\": {\r
+
+    \                                                                        \"value\": \"Address[&9].PrimaryTownName[]\"\r
+
+    \                                                                    },\r
+
+    \                                                                    \"#-1\": \"Address[&8].score[]\"\r
+
+    \                                                                },\r
+
+    \                                                                \"POBox\": {\r
+
+    \                                                                    \"*\": {\r
+
+    \                                                                        \"value\": \"Address[&9].POBox[]\"\r
+
+    \                                                                    }\r
+
+    \                                                                },\r
+
+    \                                                                \"Zip5\": {\r
+
+    \                                                                    \"*\": {\r
+
+    \                                                                        \"value\": \"Address[&9].FullZipCode[]\"\r
+
+    \                                                                    }\r
+
+    \                                                                },\r
+
+    \                                                                \"PostalCode\": {\r
+
+    \                                                                    \"*\": {\r
+
+    \                                                                        \"value\": \"Address[&9].FullPostalCode[]\"\r
+
+    \                                                                    },\r
+
+    \                                                                    \"#-1\": \"Address[&8].score[]\"\r
+
+    \                                                                },\r
+
+    \                                                                \"StateProvince\": {\r
+
+    \                                                                    \"*\": {\r
+
+    \                                                                        \"value\": \"Address[&9].TerritoryName[]\"\r
+
+    \                                                                    },\r
+
+    \                                                                    \"#-1\": \"Address[&8].score[]\"\r
+
+    \                                                                },\r
+
+    \                                                                \"ISO3166-2\": {\r
+
+    \                                                                    \"*\": {\r
+
+    \                                                                        \"value\": \"Address[&9].CountryISOAlpha2Code[]\"\r
+
+    \                                                                    },\r
+
+    \                                                                    \"#-1\": \"Address[&8].score[]\"\r
+
+    \                                                                },\r
+
+    \                                                                \"Country\": {\r
+
+    \                                                                    \"*\": {\r
+
+    \                                                                        \"lookupCode\": \"Address[&9].CountryISOAlpha2Code[]\",\r
+
+    \                                                                        \"value\": \"Address[&9].Country[]\"\r
+
+    \                                                                    },\r
+
+    \                                                                    \"#-1\": \"Address[&8].score[]\"\r
+
+    \                                                                }\r
+
+    \                                                            }\r
+
+    \                                                        }\r
+
+    \                                                    }\r
+
+    \                                                }\r
+
+    \                                            }\r
+
+    \                                        }\r
+
+    \                                    }\r
+
+    \                                }\r
+
+    \                            },\r
+
+    \                            \"*\": {\r
+
+    \                                \"@(4,Addresses)\": {\r
+
+    \                                    \"*\": {\r
+
+    \                                        \"value\": {\r
+
+    \                                            \"AddressType\": {\r
+
+    \                                                \"*\": {\r
+
+    \                                                    \"lookupCode\": {\r
+
+    \                                                        \"Shipping\": {\r
+
+    \                                                            \"@4\": {\r
+
+    \                                                                \"Primary\": {\r
+
+    \                                                                    \"*\": {\r
+
+    \                                                                        \"value\": {\r
+
+    \                                                                            \"true|True\": {\r
+
+    \                                                                                \"@9\": {\r
+
+    \                                                                                    \"#5\": \"Address[&12].score[]\",\r
+
+    \                                                                                    \"AddressLine1\": {\r
+
+    \                                                                                        \"*\": {\r
+
+    \                                                                                            \"value\": \"Address[&14].AddressLine1[]\"\r
+
+    \                                                                                        }\r
+
+    \                                                                                    },\r
+
+    \                                                                                    \"AddressLine2\": {\r
+
+    \                                                                                        \"*\": {\r
+
+    \                                                                                            \"value\": \"Address[&14].AddressLine2[]\"\r
+
+    \                                                                                        }\r
+
+    \                                                                                    },\r
+
+    \                                                                                    \"City\": {\r
+
+    \                                                                                        \"*\": {\r
+
+    \                                                                                            \"value\": \"Address[&14].PrimaryTownName[]\"\r
+
+    \                                                                                        },\r
+
+    \                                                                                        \"#-1\": \"Address[&13].score[]\"\r
+
+    \                                                                                    },\r
+
+    \                                                                                    \"POBox\": {\r
+
+    \                                                                                        \"*\": {\r
+
+    \                                                                                            \"value\": \"Address[&14].POBox[]\"\r
+
+    \                                                                                        }\r
+
+    \                                                                                    },\r
+
+    \                                                                                    \"Zip5\": {\r
+
+    \                                                                                        \"*\": {\r
+
+    \                                                                                            \"value\": \"Address[&14].FullZipCode[]\"\r
+
+    \                                                                                        }\r
+
+    \                                                                                    },\r
+
+    \                                                                                    \"PostalCode\": {\r
+
+    \                                                                                        \"*\": {\r
+
+    \                                                                                            \"value\": \"Address[&14].FullPostalCode[]\"\r
+
+    \                                                                                        },\r
+
+    \                                                                                        \"#-1\": \"Address[&13].score[]\"\r
+
+    \                                                                                    },\r
+
+    \                                                                                    \"StateProvince\": {\r
+
+    \                                                                                        \"*\": {\r
+
+    \                                                                                            \"value\": \"Address[&14].TerritoryName[]\"\r
+
+    \                                                                                        },\r
+
+    \                                                                                        \"#-1\": \"Address[&13].score[]\"\r
+
+    \                                                                                    },\r
+
+    \                                                                                    \"ISO3166-2\": {\r
+
+    \                                                                                        \"*\": {\r
+
+    \                                                                                            \"value\": \"Address[&14].CountryISOAlpha2Code[]\"\r
+
+    \                                                                                        },\r
+
+    \                                                                                        \"#-1\": \"Address[&13].score[]\"\r
+
+    \                                                                                    },\r
+
+    \                                                                                    \"Country\": {\r
+
+    \                                                                                        \"*\": {\r
+
+    \                                                                                            \"lookupCode\": \"Address[&14].CountryISOAlpha2Code[]\",\r
+
+    \                                                                                            \"value\": \"Address[&14].Country[]\"\r
+
+    \                                                                                        },\r
+
+    \                                                                                        \"#-1\": \"Address[&13].score[]\"\r
+
+    \                                                                                    }\r
+
+    \                                                                                }\r
+
+    \                                                                            }\r
+
+    \                                                                        }\r
+
+    \                                                                    }\r
+
+    \                                                                }\r
+
+    \                                                            }\r
+
+    \                                                        }\r
+
+    \                                                    }\r
+
+    \                                                }\r
+
+    \                                            }\r
+
+    \                                        }\r
+
+    \                                    }\r
+
+    \                                }\r
+
+    \                            }\r
+
+    \                        },\r
+
+    \                        \"@(2,BillingSize)\": {\r
+
+    \                            \"1\": {\r
+
+    \                                \"@(4,Addresses)\": {\r
+
+    \                                    \"*\": {\r
+
+    \                                        \"value\": {\r
+
+    \                                            \"AddressType\": {\r
+
+    \                                                \"*\": {\r
+
+    \                                                    \"lookupCode\": {\r
+
+    \                                                        \"Billing\": {\r
+
+    \                                                            \"@4\": {\r
+
+    \                                                                \"#10\": \"Address[&7].score[]\",\r
+
+    \                                                                \"AddressLine1\": {\r
+
+    \                                                                    \"*\": {\r
+
+    \                                                                        \"value\": \"Address[&9].AddressLine1[]\"\r
+
+    \                                                                    }\r
+
+    \                                                                },\r
+
+    \                                                                \"AddressLine2\": {\r
+
+    \                                                                    \"*\": {\r
+
+    \                                                                        \"value\": \"Address[&9].AddressLine2[]\"\r
+
+    \                                                                    }\r
+
+    \                                                                },\r
+
+    \                                                                \"City\": {\r
+
+    \                                                                    \"*\": {\r
+
+    \                                                                        \"value\": \"Address[&9].PrimaryTownName[]\"\r
+
+    \                                                                    },\r
+
+    \                                                                    \"#-1\": \"Address[&8].score[]\"\r
+
+    \                                                                },\r
+
+    \                                                                \"POBox\": {\r
+
+    \                                                                    \"*\": {\r
+
+    \                                                                        \"value\": \"Address[&9].POBox[]\"\r
+
+    \                                                                    }\r
+
+    \                                                                },\r
+
+    \                                                                \"Zip5\": {\r
+
+    \                                                                    \"*\": {\r
+
+    \                                                                        \"value\": \"Address[&9].FullZipCode[]\"\r
+
+    \                                                                    }\r
+
+    \                                                                },\r
+
+    \                                                                \"PostalCode\": {\r
+
+    \                                                                    \"*\": {\r
+
+    \                                                                        \"value\": \"Address[&9].FullPostalCode[]\"\r
+
+    \                                                                    },\r
+
+    \                                                                    \"#-1\": \"Address[&8].score[]\"\r
+
+    \                                                                },\r
+
+    \                                                                \"StateProvince\": {\r
+
+    \                                                                    \"*\": {\r
+
+    \                                                                        \"value\": \"Address[&9].TerritoryName[]\"\r
+
+    \                                                                    },\r
+
+    \                                                                    \"#-1\": \"Address[&8].score[]\"\r
+
+    \                                                                },\r
+
+    \                                                                \"ISO3166-2\": {\r
+
+    \                                                                    \"*\": {\r
+
+    \                                                                        \"value\": \"Address[&9].CountryISOAlpha2Code[]\"\r
+
+    \                                                                    },\r
+
+    \                                                                    \"#-1\": \"Address[&8].score[]\"\r
+
+    \                                                                },\r
+
+    \                                                                \"Country\": {\r
+
+    \                                                                    \"*\": {\r
+
+    \                                                                        \"lookupCode\": \"Address[&9].CountryISOAlpha2Code[]\",\r
+
+    \                                                                        \"value\": \"Address[&9].Country[]\"\r
+
+    \                                                                    },\r
+
+    \                                                                    \"#-1\": \"Address[&8].score[]\"\r
+
+    \                                                                }\r
+
+    \                                                            }\r
+
+    \                                                        }\r
+
+    \                                                    }\r
+
+    \                                                }\r
+
+    \                                            }\r
+
+    \                                        }\r
+
+    \                                    }\r
+
+    \                                }\r
+
+    \                            },\r
+
+    \                            \"*\": {\r
+
+    \                                \"@(4,Addresses)\": {\r
+
+    \                                    \"*\": {\r
+
+    \                                        \"value\": {\r
+
+    \                                            \"AddressType\": {\r
+
+    \                                                \"*\": {\r
+
+    \                                                    \"lookupCode\": {\r
+
+    \                                                        \"Billing\": {\r
+
+    \                                                            \"@4\": {\r
+
+    \                                                                \"Primary\": {\r
+
+    \                                                                    \"*\": {\r
+
+    \                                                                        \"value\": {\r
+
+    \                                                                            \"true|True\": {\r
+
+    \                                                                                \"@9\": {\r
+
+    \                                                                                    \"#10\": \"Address[&12].score[]\",\r
+
+    \                                                                                    \"AddressLine1\": {\r
+
+    \                                                                                        \"*\": {\r
+
+    \                                                                                            \"value\": \"Address[&14].AddressLine1[]\"\r
+
+    \                                                                                        }\r
+
+    \                                                                                    },\r
+
+    \                                                                                    \"AddressLine2\": {\r
+
+    \                                                                                        \"*\": {\r
+
+    \                                                                                            \"value\": \"Address[&14].AddressLine2[]\"\r
+
+    \                                                                                        }\r
+
+    \                                                                                    },\r
+
+    \                                                                                    \"City\": {\r
+
+    \                                                                                        \"*\": {\r
+
+    \                                                                                            \"value\": \"Address[&14].PrimaryTownName[]\"\r
+
+    \                                                                                        },\r
+
+    \                                                                                        \"#-1\": \"Address[&13].score[]\"\r
+
+    \                                                                                    },\r
+
+    \                                                                                    \"POBox\": {\r
+
+    \                                                                                        \"*\": {\r
+
+    \                                                                                            \"value\": \"Address[&14].POBox[]\"\r
+
+    \                                                                                        }\r
+
+    \                                                                                    },\r
+
+    \                                                                                    \"Zip5\": {\r
+
+    \                                                                                        \"*\": {\r
+
+    \                                                                                            \"value\": \"Address[&14].FullZipCode[]\"\r
+
+    \                                                                                        }\r
+
+    \                                                                                    },\r
+
+    \                                                                                    \"PostalCode\": {\r
+
+    \                                                                                        \"*\": {\r
+
+    \                                                                                            \"value\": \"Address[&14].FullPostalCode[]\"\r
+
+    \                                                                                        },\r
+
+    \                                                                                        \"#-1\": \"Address[&13].score[]\"\r
+
+    \                                                                                    },\r
+
+    \                                                                                    \"StateProvince\": {\r
+
+    \                                                                                        \"*\": {\r
+
+    \                                                                                            \"value\": \"Address[&14].TerritoryName[]\"\r
+
+    \                                                                                        },\r
+
+    \                                                                                        \"#-1\": \"Address[&13].score[]\"\r
+
+    \                                                                                    },\r
+
+    \                                                                                    \"ISO3166-2\": {\r
+
+    \                                                                                        \"*\": {\r
+
+    \                                                                                            \"value\": \"Address[&14].CountryISOAlpha2Code[]\"\r
+
+    \                                                                                        },\r
+
+    \                                                                                        \"#-1\": \"Address[&13].score[]\"\r
+
+    \                                                                                    },\r
+
+    \                                                                                    \"Country\": {\r
+
+    \                                                                                        \"*\": {\r
+
+    \                                                                                            \"lookupCode\": \"Address[&14].CountryISOAlpha2Code[]\",\r
+
+    \                                                                                            \"value\": \"Address[&14].Country[]\"\r
+
+    \                                                                                        },\r
+
+    \                                                                                        \"#-1\": \"Address[&13].score[]\"\r
+
+    \                                                                                    }\r
+
+    \                                                                                }\r
+
+    \                                                                            }\r
+
+    \                                                                        }\r
+
+    \                                                                    }\r
+
+    \                                                                }\r
+
+    \                                                            }\r
+
+    \                                                        }\r
+
+    \                                                    }\r
+
+    \                                                }\r
+
+    \                                            }\r
+
+    \                                        }\r
+
+    \                                    }\r
+
+    \                                }\r
+
+    \                            }\r
+
+    \                        }\r
+
+    \                    }\r
+
+    \                },\r
+
+    \                \"Name\": {\r
+
+    \                    \"*\": {\r
+
+    \                        \"value\": \"SubjectName[]\"\r
+
+    \                    }\r
+
+    \                },\r
+
+    \                \"DUNSNumber\": {\r
+
+    \                    \"*\": {\r
+
+    \                        \"value\": \"DUNSNumber[]\"\r
+
+    \                    }\r
+
+    \                },\r
+
+    \                \"Phone\": {\r
+
+    \                    \"*\": {\r
+
+    \                        \"value\": {\r
+
+    \                            \"Number\": {\r
+
+    \                                \"0\": {\r
+
+    \                                    \"value\": \"TelephoneNumber[]\"\r
+
+    \                                }\r
+
+    \                            }\r
+
+    \                        }\r
+
+    \                    }\r
+
+    \                },\r
+
+    \                \"StampID\": {\r
+
+    \                    \"0\": {\r
+
+    \                        \"value\": \"TenantId\"\r
+
+    \                    }\r
+
+    \                },\r
+
+    \                \"StampIDPartner\": {\r
+
+    \                    \"0\": {\r
+
+    \                        \"value\": \"Environment\"\r
+
+    \                    }\r
+
+    \                }\r
+
+    \            }\r
+
+    \        }\r
+
+    \    },\r
+
+    \    {\r
+
+    \        \"operation\": \"modify-overwrite-beta\",\r
+
+    \        \"spec\": {\r
+
+    \            \"Address\": {\r
+
+    \                \"*\": {\r
+
+    \                    \"score\": \"=intSum(@(1,score))\"\r
+
+    \                }\r
+
+    \            },\r
+
+    \            \"Total\": \"=size(@(1,Address))\"\r
+
+    \        }\r
+
+    \    },\r
+
+    \    {\r
+
+    \        \"operation\": \"shift\",\r
+
+    \        \"spec\": {\r
+
+    \            \"Address\": {\r
+
+    \                \"*\": {\r
+
+    \                    \"@\": \"Address[@(1,score)][]\"\r
+
+    \                }\r
+
+    \            },\r
+
+    \            \"*\": {\r
+
+    \                \"@\": \"&\"\r
+
+    \            }\r
+
+    \        }\r
+
+    \    },\r
+
+    \    {\r
+
+    \        \"operation\": \"shift\",\r
+
+    \        \"spec\": {\r
+
+    \            \"Address\": {\r
+
+    \                \"*\": {\r
+
+    \                    \"*\": {\r
+
+    \                        \"score\": {\r
+
+    \                            \"@1\": \"Address[]\"\r
+
+    \                        }\r
+
+    \                    }\r
+
+    \                }\r
+
+    \            },\r
+
+    \            \"*\": {\r
+
+    \                \"@\": \"&\"\r
+
+    \            }\r
+
+    \        }\r
+
+    \    },\r
+
+    \    {\r
+
+    \        \"operation\": \"shift\",\r
+
+    \        \"spec\": {\r
+
+    \            \"Address\": {\r
+
+    \                \"0\": {\r
+
+    \                    \"AddressLine1\": {\r
+
+    \                        \"0\": \"streetAddressLine1\"\r
+
+    \                    },\r
+
+    \                    \"AddressLine2\": {\r
+
+    \                        \"0\": \"streetAddressLine2\"\r
+
+    \                    },\r
+
+    \                    \"CountryISOAlpha2Code\": {\r
+
+    \                        \"0\": \"countryISOAlpha2Code\"\r
+
+    \                    },\r
+
+    \                    \"FullZipCode\": {\r
+
+    \                        \"0\": \"FullZipCode\"\r
+
+    \                    },\r
+
+    \                    \"FullPostalCode\": {\r
+
+    \                        \"0\": \"postalCode\"\r
+
+    \                    },\r
+
+    \                    \"PrimaryTownName\": {\r
+
+    \                        \"0\": \"addressLocality\"\r
+
+    \                    },\r
+
+    \                    \"TerritoryName\": {\r
+
+    \                        \"0\": \"addressRegion\"\r
+
+    \                    }\r
+
+    \                }\r
+
+    \            },\r
+
+    \            \"#true\": \"isCleanseAndStandardizeInformationRequired\",\r
+
+    \            \"#auto\": \"inLanguage\",\r
+
+    \            \"#25\": \"candidateMaximumQuantity\",\r
+
+    \            \"#5\": \"confidenceLowerLevelThresholdValue\",\r
+
+    \            \"TelephoneNumber\": {\r
+
+    \                \"0\": \"telephoneNumber\"\r
+
+    \            },\r
+
+    \            \"SubjectName\": {\r
+
+    \                \"0\": \"name\"\r
+
+    \            },\r
+
+    \            \"DUNSNumber\": {\r
+
+    \                \"0\": \"duns\"\r
+
+    \            },\r
+
+    \            \"uri\": \"uri\",\r
+
+    \            \"type\": \"type\"\r
+
+    \        }\r
+
+    \    },\r
+
+    \    {\r
+
+    \        \"operation\": \"modify-overwrite-beta\",\r
+
+    \        \"spec\": {\r
+
+    \            \"postalCode\": [\r
+
+    \                \"=isPresent\",\r
+
+    \                \"@(1,FullZipCode)\"\r
+
+    \            ]\r
+
+    \        }\r
+
+    \    },\r
+
+    \    {\r
+
+    \        \"operation\": \"remove\",\r
+
+    \        \"spec\": {\r
+
+    \            \"FullZipCode\": \"\"\r
+
+    \        }\r
+
+    \    }\r
+
+    ]"
+order: 1000

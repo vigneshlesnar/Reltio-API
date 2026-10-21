@@ -1,0 +1,77 @@
+$kind: http-request
+description: Syntax for adding a relationship
+url: "{{tenantURL}}/relations"
+method: POST
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+body:
+  type: text
+  content: "[\r
+
+    \  {\r
+
+    \    \"type\": \"configuration/relationTypes/<relationshipType>\",\r
+
+    \    \"crosswalks\": [\r
+
+    \      {\r
+
+    \        \"type\": \"configuration/sources/<sourceType>\",\r
+
+    \        \"value\": \"<crosswalkID>\"\r
+
+    \      }\r
+
+    \    ],\r
+
+    \    \"startObject\": {\r
+
+    \      \"crosswalks\": [\r
+
+    \        {\r
+
+    \          \"type\": \"configuration/sources/<sourceType>\",\r
+
+    \          \"value\": \"<crosswalkID>\"\r
+
+    \        }\r
+
+    \      ]\r
+
+    \    },\r
+
+    \    \"endObject\": {\r
+
+    \      \"crosswalks\": [\r
+
+    \        {\r
+
+    \          \"type\": \"configuration/sources/<sourceType>\",\r
+
+    \          \"value\": \"<crosswalkID>\"\r
+
+    \        }\r
+
+    \      ]\r
+
+    \    },\r
+
+    \    \"attributes\": {\r
+
+    \      \"<attributrName>\": [\r
+
+    \        {\r
+
+    \          \"value\": \"<value>\"\r
+
+    \        }\r
+
+    \      ]\r
+
+    \    }\r
+
+    \  }\r
+
+    ]"
+order: 3000

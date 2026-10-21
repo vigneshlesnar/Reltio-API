@@ -1,0 +1,6 @@
+$kind: http-request
+url: http://{{env}}.reltio.com/reltio/tenants/{{mdmTenant}}/
+method: GET
+headers:
+  Authorization: Bearer {{accessToken}}
+order: 10000

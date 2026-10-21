@@ -1,0 +1,9 @@
+$kind: http-request
+url: "{{serviceURL}}/dtss/entities/_matches"
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{accessToken}}
+  CustomerTenant: lUD27cuZGcLMcS0
+  DataTenant: T74szvy2aXewh59
+order: 22000

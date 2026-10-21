@@ -1,0 +1,80 @@
+$kind: http-request
+description: "[https://docs.reltio.com/entitiesapi/createentities.html](https://docs.reltio.com/entitiesapi/createentities.html)"
+url: "{{tenantURL}}/entities?returnObjects"
+method: POST
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+queryParams:
+  - key: returnObjects
+    value: null
+  - key: options
+    value: partialOverride
+    disabled: true
+  - key: maxObjectsToUpdate
+    value: ""
+    disabled: true
+  - key: executeLCA
+    value: ""
+    disabled: true
+  - key: alwaysCreateDCR
+    value: ""
+    disabled: true
+body:
+  type: text
+  content: "[\r
+
+    \  {\r
+
+    \    \"type\": \"configuration/entityTypes/<entityType>\",\r
+
+    \    \"attributes\": {\r
+
+    \      \"FirstName\": [\r
+
+    \        {\r
+
+    \          \"value\": \"<firstName>\"\r
+
+    \        }\r
+
+    \      ],\r
+
+    \      \"LastName\": [\r
+
+    \        {\r
+
+    \          \"value\": \"<lastName>\"\r
+
+    \        }\r
+
+    \      ],\r
+
+    \      \"DoB\": [\r
+
+    \        {\r
+
+    \          \"value\": \"<YYYY-MM-DD>\"\r
+
+    \        }\r
+
+    \      ]\r
+
+    \    },\r
+
+    \    \"crosswalks\": [\r
+
+    \      {\r
+
+    \        \"type\": \"configuration/sources/<sourceType>\",\r
+
+    \        \"value\": \"<crosswalkID>\"\r
+
+    \      }\r
+
+    \    ]\r
+
+    \  }\r
+
+    ]"
+order: 4000

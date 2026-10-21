@@ -1,0 +1,45 @@
+$kind: http-request
+url: "{{serviceURL}}/dtss/subscription"
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{accessToken}}
+body:
+  type: text
+  content: |-
+    [
+      {
+      "dataTenant": {
+          "id": "T74szvy2aXewh59"
+        },
+        "customerTenant": {
+          "id": "lUD27cuZGcLMcS0"
+        },
+        "bringGoldenRecord": true,
+        "bringInternalSources": [],
+        "mappings": [],
+        "eventsInDT": {
+          "crosswalkDeleted": {
+            "defaultActionInCT": "IGNORE",
+            "source": {}
+          },
+          "entityDeleted": {
+            "actionInCT": "IGNORE"
+          },
+          "entityModified": {
+            "actionInCT": "ACTIVATE"
+          },
+          "entityUnmerged": {
+            "actionInCT": "IGNORE"
+          },
+          "entityMerged": {
+            "actionInCT": "IGNORE"
+          },
+          "entityCreated": {
+            "entityTypes": [],
+            "actionInCT": "IGNORE"
+          }
+        }
+      }
+    ]
+order: 9000

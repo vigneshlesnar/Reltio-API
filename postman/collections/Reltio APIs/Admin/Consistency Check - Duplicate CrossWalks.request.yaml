@@ -1,0 +1,10 @@
+$kind: http-request
+description: Checking tenant for having different entities with same crosswalks.
+url: "{{serviceURL}}/duplicateCrosswalksCheck?tenantId={{tenant}}"
+method: POST
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+queryParams:
+  tenantId: "{{tenant}}"
+order: 6000

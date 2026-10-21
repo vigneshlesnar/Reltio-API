@@ -1,0 +1,20 @@
+$kind: http-request
+description: "[https://docs.reltio.com/dnbapi/dnbbatcanceljob.html](https://docs.reltio.com/dnbapi/dnbbatcanceljob.html)"
+url: "{{dnbconnector}}/dnb/batch/JobIDHere"
+method: DELETE
+headers:
+  - key: Authorization
+    value: Bearer {{accessToken}}
+  - key: Content-Type
+    value: application/json
+  - key: EnvironmentUrl
+    value: https://dev.reltio.com
+  - key: TenantId
+    value: "{{tenant}}"
+  - key: Reltio-User
+    value: ""
+    disabled: true
+  - key: Reltio-Password
+    value: ""
+    disabled: true
+order: 3000

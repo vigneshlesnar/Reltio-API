@@ -1,0 +1,13 @@
+$kind: http-request
+url: "{{tenantURL}}/relations/_byCrosswalk/CON_1000038_ORG_1000038?type=Finance"
+method: GET
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+queryParams:
+  - key: type
+    value: Finance
+  - key: sourceTable
+    value: client
+    disabled: true
+order: 2000

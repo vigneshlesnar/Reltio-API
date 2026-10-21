@@ -1,0 +1,4 @@
+$kind: http-request
+url: "{{toolsURL}}/matching/matchTokenClasses"
+method: GET
+order: 7000

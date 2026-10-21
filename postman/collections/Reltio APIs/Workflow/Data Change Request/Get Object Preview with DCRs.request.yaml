@@ -1,0 +1,9 @@
+$kind: http-request
+url: "{{tenantURL}}/entities/0573Yp4/_withChangeRequests?changeRequestIds=08ev9uo"
+method: GET
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+queryParams:
+  changeRequestIds: 08ev9uo
+order: 6000

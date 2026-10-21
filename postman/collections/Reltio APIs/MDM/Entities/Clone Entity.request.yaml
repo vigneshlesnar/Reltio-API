@@ -1,0 +1,29 @@
+$kind: http-request
+description: "[https://docs.reltio.com/entitiesapi/cloneentities.html](https://docs.reltio.com/entitiesapi/cloneentities.html)"
+url: "{{tenantURL}}/entities/<entityID>/_clone"
+method: POST
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+queryParams:
+  - key: valuesToCopy
+    value: null
+    disabled: true
+body:
+  type: text
+  content: "{\r
+
+    \  \"attributeReplacementMapping\": {\r
+
+    \    \"attributes/FirstName\": \"Copy of {value}\"\r
+
+    \  },\r
+
+    \  \"relationshipTypesToCopy\": [\r
+
+    \    \"configuration/relationTypes/HasAddress\"\r
+
+    \  ]\r
+
+    }"
+order: 7000

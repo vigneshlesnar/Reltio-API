@@ -1,0 +1,27 @@
+$kind: http-request
+url: "{{tenantURL}}/entities/_verifyMatches?hashedTokens=false&rules=configuration/entityTypes/Contact/matchGroups/BaseRule03"
+method: POST
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+queryParams:
+  - key: hashedTokens
+    value: "false"
+  - key: show
+    value: full
+    disabled: true
+  - key: documentsFromDatabase
+    value: "true"
+    disabled: true
+  - key: checkOvercollisionedTokens
+    value: "false"
+    disabled: true
+  - key: time
+    value: ""
+    disabled: true
+  - key: rules
+    value: configuration/entityTypes/Contact/matchGroups/BaseRule03
+body:
+  type: text
+  content: '{"first":{"uri":"entities/<EntityID_1>"},"second":{"uri":"entities/<EntityID_2>"}}'
+order: 1000

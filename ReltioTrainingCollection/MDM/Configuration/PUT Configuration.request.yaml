@@ -1,0 +1,11 @@
+$kind: http-request
+description: "[https://docs.reltio.com/configapi/setconfig.html](https://docs.reltio.com/configapi/setconfig.html)"
+url: "{{tenantURL}}/configuration"
+method: PUT
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+body:
+  type: text
+  content: ""
+order: 4000

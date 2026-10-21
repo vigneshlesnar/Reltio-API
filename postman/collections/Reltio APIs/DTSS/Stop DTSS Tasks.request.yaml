@@ -1,0 +1,10 @@
+$kind: http-request
+url: "{{serviceURL}}/dtss/tasks/c35cfe80-4a06-4383-a913-069f08f0f201/_stop"
+method: PUT
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{accessToken}}
+body:
+  type: text
+  content: '{ "value" : "STOPPED" }'
+order: 24000

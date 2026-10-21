@@ -1,0 +1,10 @@
+$kind: http-request
+url: "{{tenantURL}}/configuration/_validation"
+method: POST
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+body:
+  type: json
+  content: ""
+order: 3000

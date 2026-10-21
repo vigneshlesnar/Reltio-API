@@ -1,0 +1,44 @@
+$kind: http-request
+description: "[https://docs.reltio.com/dnbapi/dnbmonbackgroundjob.html](https://docs.reltio.com/dnbapi/dnbmonbackgroundjob.html)"
+url: "{{dnbconnector}}/dnb/monitoring/background"
+method: POST
+headers:
+  - key: Authorization
+    value: Bearer {{accessToken}}
+  - key: Content-Type
+    value: application/json
+    description: Required
+  - key: EnvironmentUrl
+    value: https://dev.reltio.com
+    description: Required
+  - key: TenantId
+    value: "{{tenant}}"
+    description: Required
+  - key: DnB-User
+    value: ""
+    disabled: true
+  - key: DnB-Password
+    value: ""
+    disabled: true
+  - key: DnB-Token
+    value: ""
+    disabled: true
+  - key: DnB-Registration
+    value: ""
+    description: Required
+  - key: cronExpression
+    value: ""
+    disabled: true
+  - key: awsAccessKey
+    value: ""
+    disabled: true
+  - key: awsSecretKey
+    value: ""
+    disabled: true
+  - key: S3Region
+    value: ""
+    disabled: true
+  - key: entityType
+    value: ""
+    disabled: true
+order: 5000

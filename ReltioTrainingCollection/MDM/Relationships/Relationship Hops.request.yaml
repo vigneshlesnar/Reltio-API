@@ -1,0 +1,12 @@
+$kind: http-request
+url: "{{tenantURL}}/entities/<EntityID>/_hops?deep=3&max=50&select=label&filterLastLevel=false"
+method: GET
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+queryParams:
+  deep: "3"
+  max: "50"
+  select: label
+  filterLastLevel: "false"
+order: 6000

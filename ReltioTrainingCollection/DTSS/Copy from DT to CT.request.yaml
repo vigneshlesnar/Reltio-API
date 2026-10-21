@@ -1,0 +1,36 @@
+$kind: http-request
+url: "{{serviceURL}}/dtss/subscription/task/copy"
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{accessToken}}
+body:
+  type: text
+  content: "{\r
+
+    \  \"dataTenantId\": {\r
+
+    \    \"id\": \"dttest\"\r
+
+    \  },\r
+
+    \  \"customerTenantId\": {\r
+
+    \    \"id\": \"cttest\"\r
+
+    \  },\r
+
+    \  \"entityTypes\": [\r
+
+    \    \"configuration/entityTypes/HCP\"\r
+
+    \  ],\r
+
+    \  \"emails\": [\r
+
+    \    \"vignesh.chandran@reltio.com\"\r
+
+    \  ]\r
+
+    }"
+order: 13000

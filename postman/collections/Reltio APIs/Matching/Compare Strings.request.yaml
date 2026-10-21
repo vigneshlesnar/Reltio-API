@@ -1,0 +1,15 @@
+$kind: http-request
+url: "{{toolsURL}}/matching/compare"
+method: POST
+body:
+  type: json
+  content: |-
+    {
+      "first": "Devoti",
+      "second": "Devat",
+      "comparatorClass": {
+    	"class": "com.reltio.match.comparator.DoubleMetaphoneComparator"
+      },
+      "fuzzy": true
+    }
+order: 2000

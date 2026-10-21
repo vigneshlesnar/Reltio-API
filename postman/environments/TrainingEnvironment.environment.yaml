@@ -1,0 +1,56 @@
+name: TrainingEnvironment
+values:
+  - key: tenantURL
+    value: 'https://{{env}}.reltio.com/reltio/api/{{mdmTenant}}'
+  - key: env
+    value: gus-training
+  - key: mdmTenant
+    value: trnMDML80o1wR
+  - key: rdmTenant
+    value: trnRDML80o1wR
+  - key: client_id
+    value: ''
+  - key: client_secret
+    value: ''
+  - key: base64_encoded_credentials
+    value: ''
+  - key: accessToken
+    value: ''
+  - key: rdmURL
+    value: 'https://ssrv-02-rdm.reltio.com/'
+  - key: urlAuth
+    value: 'https://auth.reltio.com/oauth/'
+  - key: DataLoaderServiceURL
+    value: 'https://361-dataloader.reltio.com/dataloader/api/'
+  - key: toolsURL
+    value: 'https://{{env}}.reltio.com/reltio/tools'
+  - key: workflowURL
+    value: 'https://{{env}}-workflow.reltio.com/workflow-adapter'
+  - key: cleanseURL
+    value: 'https://cleanse.reltio.com'
+  - key: validationURL
+    value: 'https://{{env}}-validation.reltio.com'
+  - key: lcaURL
+    value: 'https://{{env}}-lca.reltio.com'
+  - key: dtssURL
+    value: 'https://test-usg-dtss.reltio.com'
+  - key: SFDC_Connector_URL
+    value: 'https://gus-ssrv-sfdc-integration.reltio.com'
+  - key: sfdcProfile
+    value: ''
+  - key: dnbconnector
+    value: 'https://test-dnbconnector.reltio.com/b2bIntegration/'
+  - key: dnbProfile
+    value: ''
+  - key: userClient
+    value: cmVsdGlvX3VpOm1ha2l0YQ==
+  - key: username
+    value: TRAINEE_L80o1wR
+  - key: password
+    value: Kwghh9gS2*
+  - key: state_token
+    value: ''
+  - key: OTP_code
+    value: ''
+  - key: refresh_token
+    value: ''

@@ -1,0 +1,32 @@
+$kind: http-request
+url: "{{dnbconnector}}/config/profiles"
+method: POST
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+  EnvironmentUrl: https://dev.reltio.com/
+  tenantID: "{{tenant}}"
+  Config-Flags: nested
+  DnB-User: ""
+  DnB-Password: ""
+body:
+  type: text
+  content: |-
+    {
+        "name": "putProfileNameHere",
+        "environments": [
+            {
+                "customerTenant": {
+                    "environmentUrl": "https://dev.reltio.com",
+                    "tenantId": "putTenantIDHere"
+                },
+                "dataTenants": [
+                    {
+                        "environmentUrl": "https://dev.reltio.com",
+                        "tenantId": "putDataTenantIDHere"
+                    }
+                ]
+            }
+        ]
+    }
+order: 2000

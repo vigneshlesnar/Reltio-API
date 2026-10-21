@@ -1,0 +1,28 @@
+$kind: http-request
+description: "[https://docs.reltio.com/entitiesapi/deleteentity.html](https://docs.reltio.com/entitiesapi/deleteentity.html)"
+url: "{{tenantURL}}/entities/<entityID>/_update"
+method: POST
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+queryParams:
+  - key: options
+    value: sendHidden,updateAttributeUpdateDates,addRefAttrUriToCrosswalk
+    disabled: true
+body:
+  type: json
+  content: |-
+    [
+        {
+            "type": "UPDATE_END_DATE", 
+            "newValue": {
+                "value": "{{currentUnixTime}}"
+                }
+        }
+    ]
+scripts:
+  - type: beforeRequest
+    code: |
+      pm.variables.set("currentUnixTime", Date.now());
+    language: text/javascript
+order: 9000

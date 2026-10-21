@@ -1,0 +1,14 @@
+$kind: http-request
+url: "{{tenantURL}}/reindex?tenantId={{tenant}}&updateEntities=true&enableSeparateIndexing=true"
+method: POST
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+queryParams:
+  tenantId: "{{tenant}}"
+  updateEntities: "true"
+  enableSeparateIndexing: "true"
+body:
+  type: text
+  content: ""
+order: 1000

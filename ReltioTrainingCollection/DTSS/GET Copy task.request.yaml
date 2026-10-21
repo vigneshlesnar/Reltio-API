@@ -1,0 +1,9 @@
+$kind: http-request
+url: "{{serviceURL}}/dtss/subscription/task/copy"
+method: GET
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{accessToken}}
+  DataTenant: ""
+  CustomerTenant: ""
+order: 14000

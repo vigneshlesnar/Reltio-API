@@ -1,0 +1,85 @@
+$kind: http-request
+description: "[https://docs.reltio.com/entitiesapi/cumulativeentityupdate.html](https://docs.reltio.com/entitiesapi/cumulativeentityupdate.html)"
+url: "{{tenantURL}}/relations/<relationID>/_update"
+method: POST
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+queryParams:
+  - key: options
+    value: partialOverride
+    disabled: true
+body:
+  type: text
+  content: "[\r
+
+    \  {\r
+
+    \    \"type\": \"DELETE_ATTRIBUTE\",\r
+
+    \    \"uri\": \"relations/<relationID>/attributes/<atributeName>/<attributeID>\",\r
+
+    \    \"crosswalk\": {\r
+
+    \      \"type\": \"configuration/sources/<Source>\",\r
+
+    \      \"value\": \"<crosswalkID>\"\r
+
+    \    }\r
+
+    \  },\r
+
+    \  {\r
+
+    \    \"type\": \"INSERT_ATTRIBUTE\",\r
+
+    \    \"uri\": \"configuration/relations/<RelationName>/attributes/<AttributeName>\",\r
+
+    \    \"crosswalk\": {\r
+
+    \      \"type\": \"configuration/sources/<Source>\",\r
+
+    \      \"value\": \"<crosswalkID>\"\r
+
+    \    },\r
+
+    \    \"newValue\": [\r
+
+    \      {\r
+
+    \        \"value\": \"ValueC\"\r
+
+    \      }\r
+
+    \    ]\r
+
+    \  },  \r
+
+    \  {\r
+
+    \    \"type\": \"UPDATE_ATTRIBUTE\",\r
+
+    \    \"uri\": \"relations/<relationID>/attributes/<atributeName>/<attributeID>\",\r
+
+    \    \"crosswalk\": {\r
+
+    \      \"type\": \"configuration/sources/<Source>\",\r
+
+    \      \"value\": \"<crosswalkID>\"\r
+
+    \    },\r
+
+    \    \"newValue\": [\r
+
+    \      {\r
+
+    \        \"value\": \"ValueC\"\r
+
+    \      }\r
+
+    \    ]\r
+
+    \  }\r
+
+    ]"
+order: 5000

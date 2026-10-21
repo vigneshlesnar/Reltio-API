@@ -1,0 +1,12 @@
+$kind: http-request
+url: https://auth.reltio.com/oauth/revoke
+method: POST
+headers:
+  Authorization: Basic {{userClient}}
+body:
+  type: formdata
+  content:
+    - type: text
+      key: token
+      value: "{{accessToken}}"
+order: 4000

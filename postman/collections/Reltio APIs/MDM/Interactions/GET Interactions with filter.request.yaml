@@ -1,0 +1,9 @@
+$kind: http-request
+url: "{{tenantURL}}/interactions?filter=(gt(updatedTime, 1129507200))"
+method: GET
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+queryParams:
+  filter: (gt(updatedTime, 1129507200))
+order: 1000

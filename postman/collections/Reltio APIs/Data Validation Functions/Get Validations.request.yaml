@@ -1,0 +1,11 @@
+$kind: http-request
+url: https://console.reltio.com/datamodeler/services/dvf/api/{{tenant}}/dataValidationFunctions/entityTypes/BusinessOrganization
+method: GET
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+body:
+  type: text
+  content: ""
+settings: {}
+order: 1000

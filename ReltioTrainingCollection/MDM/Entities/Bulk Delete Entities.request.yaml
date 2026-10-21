@@ -1,0 +1,19 @@
+$kind: http-request
+description: "[https://docs.reltio.com/entitiesapi/bulkdeleteentitiesapi.html](https://docs.reltio.com/entitiesapi/bulkdeleteentitiesapi.html)"
+url: "{{tenantURL}}/entities/_delete"
+method: POST
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+body:
+  type: text
+  content: "{\r
+
+    \  \"objects\": {\r
+
+    \    \"filter\": \"<add filter here>\"\r
+
+    \  }\r
+
+    }"
+order: 13000

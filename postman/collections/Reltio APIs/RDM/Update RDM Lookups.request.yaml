@@ -1,0 +1,4 @@
+$kind: http-request
+url: "{{rdmURL}}/lookups/{{rdmTenant}}/OwnershipStatuses"
+method: POST
+order: 5000

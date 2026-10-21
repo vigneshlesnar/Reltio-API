@@ -1,0 +1,20 @@
+$kind: http-request
+description: "[https://docs.reltio.com/dnbapi/dnbbatgetjobstatus.html](https://docs.reltio.com/dnbapi/dnbbatgetjobstatus.html)"
+url: "{{dnbconnector}}/dnb/batch/JobIDHere"
+method: GET
+headers:
+  - key: Authorization
+    value: Bearer {{accessToken}}
+  - key: Content-Type
+    value: application/json
+  - key: EnvironmentUrl
+    value: https://dev.reltio.com
+  - key: TenantId
+    value: "{{tenant}}"
+  - key: Reltio-User
+    value: ""
+    disabled: true
+  - key: Reltio-Password
+    value: ""
+    disabled: true
+order: 2000

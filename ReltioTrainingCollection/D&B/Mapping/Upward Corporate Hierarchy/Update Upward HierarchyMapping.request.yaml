@@ -1,0 +1,1175 @@
+$kind: http-request
+description: "[https://docs.reltio.com/dnbapi/dnbsavecorporatemapping.html](https://docs.reltio.com/dnbapi/dnbsavecorporatemapping.html)"
+url: "{{dnbconnector}}/config/profiles/{{dnbProfile}}/mappings/corporate_linkage_upward?plus=true"
+method: POST
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/jon
+queryParams:
+  - key: product
+    value: cmpelk
+    disabled: true
+  - key: plus
+    value: "true"
+body:
+  type: json
+  content: "[\r
+
+    \  {\r
+
+    \    \"operation\": \"shift\",\r
+
+    \    \"spec\": {\r
+
+    \      \"OrderProductResponse\": {\r
+
+    \        \"OrderProductResponseDetail\": {\r
+
+    \          \"Product\": {\r
+
+    \            \"LinkageResponseOrganizationCount\": \"familyTreeMemebersCount\",\r
+
+    \            \"Organization\": {\r
+
+    \              \"#configuration/entityTypes/Organization\": \"familyTree[0].type\",\r
+
+    \              \"#configuration/sources/DnB\": \"familyTree[0].crosswalks[0].type\",\r
+
+    \              \"#Real Time\": \"familyTree[0].attributes.DnBSource[].value\",\r
+
+    \              \"SubjectHeader\": {\r
+
+    \                \"DUNSNumber\": [\r
+
+    \                  \"familyTree[0].attributes.DUNSNumber[].value\",\r
+
+    \                  \"familyTree[0].crosswalks[0].value\"\r
+
+    \                ]\r
+
+    \              },\r
+
+    \              \"OrganizationName\": {\r
+
+    \                \"OrganizationPrimaryName\": {\r
+
+    \                  \"OrganizationName\": {\r
+
+    \                    \"\\\\$\": \"familyTree[0].attributes.Name[].value\"\r
+
+    \                  }\r
+
+    \                },\r
+
+    \                \"TradeStyleName\": {\r
+
+    \                  \"*\": {\r
+
+    \                    \"OrganizationName\": {\r
+
+    \                      \"\\\\$\": \"familyTree[0].attributes.TradeStyleName[&2].value.OrganizationName[].value\"\r
+
+    \                    }\r
+
+    \                  }\r
+
+    \                }\r
+
+    \              },\r
+
+    \              \"OrganizationDetail\": {\r
+
+    \                \"StandaloneOrganizationIndicator\": \"familyTree[0].attributes.OrganizationDetail[0].value.Standalone[].value\",\r
+
+    \                \"FamilyTreeMemberRole\": {\r
+
+    \                  \"*\": {\r
+
+    \                    \"FamilyTreeMemberRoleText\": {\r
+
+    \                      \"\\\\$\": \"familyTree[0].attributes.OrganizationDetail[0].value.MemberRole[&2].value\"\r
+
+    \                    }\r
+
+    \                  }\r
+
+    \                }\r
+
+    \              },\r
+
+    \              \"Location\": {\r
+
+    \                \"PrimaryAddress\": {\r
+
+    \                  \"StreetAddressLine\": {\r
+
+    \                    \"0\": {\r
+
+    \                      \"LineText\": \"familyTree[0].attributes.Addresses[0].value.AddressLine1[].value\"\r
+
+    \                    },\r
+
+    \                    \"1\": {\r
+
+    \                      \"LineText\": \"familyTree[0].attributes.Addresses[0].value.AddressLine2[].value\"\r
+
+    \                    },\r
+
+    \                    \"#Shipping\": \"familyTree[0].attributes.Addresses[0].value.AddressType[].value\",\r
+
+    \                    \"#true\": \"familyTree[0].attributes.Addresses[0].value.Primary[].value\",\r
+
+    \                    \"@(1,PostalCode)\": \"familyTree[0].attributes.Addresses[0].value.PostalCode[].value\",\r
+
+    \                    \"@(1,PrimaryTownName)\": \"familyTree[0].attributes.Addresses[0].value.City[].value\",\r
+
+    \                    \"@(1,TerritoryOfficialName)\": \"familyTree[0].attributes.Addresses[0].value.StateProvince[].value\",\r
+
+    \                    \"@(1,CountryISOAlpha2Code)\": \"familyTree[0].attributes.Addresses[0].value.Country[].value\"\r
+
+    \                  }\r
+
+    \                }\r
+
+    \              },\r
+
+    \              \"Linkage\": {\r
+
+    \                \"FamilyTreeMemberOrganization\": {\r
+
+    \                  \"#DnB Linkage\": \"familyTree[0].attributes.VendorOrganizationType[].value\",\r
+
+    \                  \"*\": {\r
+
+    \                    \"LinkageResponseOrganizationCount\": \"count\",\r
+
+    \                    \"#configuration/entityTypes/Organization\": \"familyTree[1].type\",\r
+
+    \                    \"#configuration/sources/DnB\": \"familyTree[1].crosswalks[0].type\",\r
+
+    \                    \"#DnB Linkage\": \"familyTree[1].attributes.VendorOrganizationType[].value\",\r
+
+    \                    \"#Real Time\": \"familyTree[1].attributes.DnBSource[].value\",\r
+
+    \                    \"SubjectHeader\": {\r
+
+    \                      \"DUNSNumber\": [\"familyTree[1].attributes.DUNSNumber[].value\", \"familyTree[1].crosswalks[0].value\"]\r
+
+    \                    },\r
+
+    \                    \"OrganizationName\": {\r
+
+    \                      \"OrganizationPrimaryName\": {\r
+
+    \                        \"OrganizationName\": {\r
+
+    \                          \"\\\\$\": \"familyTree[1].attributes.Name[].value\"\r
+
+    \                        }\r
+
+    \                      },\r
+
+    \                      \"TradeStyleName\": {\r
+
+    \                        \"*\": {\r
+
+    \                          \"OrganizationName\": {\r
+
+    \                            \"\\\\$\": \"familyTree[1].attributes.TradeStyleName[&2].value.OrganizationName[].value\"\r
+
+    \                          }\r
+
+    \                        }\r
+
+    \                      }\r
+
+    \                    },\r
+
+    \                    \"OrganizationDetail\": {\r
+
+    \                      \"StandaloneOrganizationIndicator\": \"familyTree[1].attributes.OrganizationDetail[0].value.Standalone[].value\",\r
+
+    \                      \"FamilyTreeMemberRole\": {\r
+
+    \                        \"*\": {\r
+
+    \                          \"FamilyTreeMemberRoleText\": {\r
+
+    \                            \"\\\\$\": \"familyTree[1].attributes.OrganizationDetail[0].value.MemberRole[&2].value\"\r
+
+    \                          }\r
+
+    \                        }\r
+
+    \                      }\r
+
+    \                    },\r
+
+    \                    \"Location\": {\r
+
+    \                      \"PrimaryAddress\": {\r
+
+    \                        \"StreetAddressLine\": {\r
+
+    \                          \"0\": {\r
+
+    \                            \"LineText\": \"familyTree[1].attributes.Addresses[0].value.AddressLine1[].value\"\r
+
+    \                          },\r
+
+    \                          \"1\": {\r
+
+    \                            \"LineText\": \"familyTree[1].attributes.Addresses[0].value.AddressLine2[].value\"\r
+
+    \                          },\r
+
+    \                          \"#Shipping\": \"familyTree[1].attributes.Addresses[0].value.AddressType[].value\",\r
+
+    \                          \"#true\": \"familyTree[1].attributes.Addresses[0].value.Primary[].value\",\r
+
+    \                          \"@(1,PostalCode)\": \"familyTree[1].attributes.Addresses[0].value.PostalCode[].value\",\r
+
+    \                          \"@(1,PrimaryTownName)\": \"familyTree[1].attributes.Addresses[0].value.City[].value\",\r
+
+    \                          \"@(1,TerritoryOfficialName)\": \"familyTree[1].attributes.Addresses[0].value.StateProvince[].value\",\r
+
+    \                          \"@(1,CountryISOAlpha2Code)\": \"familyTree[1].attributes.Addresses[0].value.Country[].value\"\r
+
+    \                        }\r
+
+    \                      }\r
+
+    \                    },\r
+
+    \                    \"Linkage\": {\r
+
+    \                      \"FamilyTreeMemberOrganization\": {\r
+
+    \                        \"#DnB Linkage\": \"familyTree[1].attributes.VendorOrganizationType[].value\",\r
+
+    \                        \"*\": {\r
+
+    \                          \"LinkageResponseOrganizationCount\": \"count\",\r
+
+    \                          \"#configuration/entityTypes/Organization\": \"familyTree[2].type\",\r
+
+    \                          \"#configuration/sources/DnB\": \"familyTree[2].crosswalks[0].type\",\r
+
+    \                          \"#DnB Linkage\": \"familyTree[2].attributes.VendorOrganizationType[].value\",\r
+
+    \                          \"#Real Time\": \"familyTree[2].attributes.DnBSource[].value\",\r
+
+    \                          \"SubjectHeader\": {\r
+
+    \                            \"DUNSNumber\": [\"familyTree[2].attributes.DUNSNumber[].value\", \"familyTree[2].crosswalks[0].value\"]\r
+
+    \                          },\r
+
+    \                          \"OrganizationName\": {\r
+
+    \                            \"OrganizationPrimaryName\": {\r
+
+    \                              \"OrganizationName\": {\r
+
+    \                                \"\\\\$\": \"familyTree[2].attributes.Name[].value\"\r
+
+    \                              }\r
+
+    \                            },\r
+
+    \                            \"TradeStyleName\": {\r
+
+    \                              \"*\": {\r
+
+    \                                \"OrganizationName\": {\r
+
+    \                                  \"\\\\$\": \"familyTree[2].attributes.TradeStyleName[&2].value.OrganizationName[].value\"\r
+
+    \                                }\r
+
+    \                              }\r
+
+    \                            }\r
+
+    \                          },\r
+
+    \                          \"OrganizationDetail\": {\r
+
+    \                            \"StandaloneOrganizationIndicator\": \"familyTree[2].attributes.OrganizationDetail[0].value.Standalone[].value\",\r
+
+    \                            \"FamilyTreeMemberRole\": {\r
+
+    \                              \"*\": {\r
+
+    \                                \"FamilyTreeMemberRoleText\": {\r
+
+    \                                  \"\\\\$\": \"familyTree[2].attributes.OrganizationDetail[0].value.MemberRole[&2].value\"\r
+
+    \                                }\r
+
+    \                              }\r
+
+    \                            }\r
+
+    \                          },\r
+
+    \                          \"Location\": {\r
+
+    \                            \"PrimaryAddress\": {\r
+
+    \                              \"StreetAddressLine\": {\r
+
+    \                                \"0\": {\r
+
+    \                                  \"LineText\": \"familyTree[2].attributes.Addresses[0].value.AddressLine1[].value\"\r
+
+    \                                },\r
+
+    \                                \"1\": {\r
+
+    \                                  \"LineText\": \"familyTree[2].attributes.Addresses[0].value.AddressLine2[].value\"\r
+
+    \                                },\r
+
+    \                                \"#Shipping\": \"familyTree[2].attributes.Addresses[0].value.AddressType[].value\",\r
+
+    \                                \"#true\": \"familyTree[2].attributes.Addresses[0].value.Primary[].value\",\r
+
+    \                                \"@(1,PostalCode)\": \"familyTree[2].attributes.Addresses[0].value.PostalCode[].value\",\r
+
+    \                                \"@(1,PrimaryTownName)\": \"familyTree[2].attributes.Addresses[0].value.City[].value\",\r
+
+    \                                \"@(1,TerritoryOfficialName)\": \"familyTree[2].attributes.Addresses[0].value.StateProvince[].value\",\r
+
+    \                                \"@(1,CountryISOAlpha2Code)\": \"familyTree[2].attributes.Addresses[0].value.Country[].value\"\r
+
+    \                              }\r
+
+    \                            }\r
+
+    \                          },\r
+
+    \                          \"Linkage\": {\r
+
+    \                            \"FamilyTreeMemberOrganization\": {\r
+
+    \                              \"#DnB Linkage\": \"familyTree[2].attributes.VendorOrganizationType[].value\",\r
+
+    \                              \"*\": {\r
+
+    \                                \"LinkageResponseOrganizationCount\": \"count\",\r
+
+    \                                \"#configuration/entityTypes/Organization\": \"familyTree[3].type\",\r
+
+    \                                \"#configuration/sources/DnB\": \"familyTree[3].crosswalks[0].type\",\r
+
+    \                                \"#DnB Linkage\": \"familyTree[3].attributes.VendorOrganizationType[].value\",\r
+
+    \                                \"#Real Time\": \"familyTree[3].attributes.DnBSource[].value\",\r
+
+    \                                \"SubjectHeader\": {\r
+
+    \                                  \"DUNSNumber\": [\"familyTree[3].attributes.DUNSNumber[].value\", \"familyTree[3].crosswalks[0].value\"]\r
+
+    \                                },\r
+
+    \                                \"OrganizationName\": {\r
+
+    \                                  \"OrganizationPrimaryName\": {\r
+
+    \                                    \"OrganizationName\": {\r
+
+    \                                      \"\\\\$\": \"familyTree[3].attributes.Name[].value\"\r
+
+    \                                    }\r
+
+    \                                  },\r
+
+    \                                  \"TradeStyleName\": {\r
+
+    \                                    \"*\": {\r
+
+    \                                      \"OrganizationName\": {\r
+
+    \                                        \"\\\\$\": \"familyTree[3].attributes.TradeStyleName[&2].value.OrganizationName[].value\"\r
+
+    \                                      }\r
+
+    \                                    }\r
+
+    \                                  }\r
+
+    \                                },\r
+
+    \                                \"OrganizationDetail\": {\r
+
+    \                                  \"StandaloneOrganizationIndicator\": \"familyTree[3].attributes.OrganizationDetail[0].value.Standalone[].value\",\r
+
+    \                                  \"FamilyTreeMemberRole\": {\r
+
+    \                                    \"*\": {\r
+
+    \                                      \"FamilyTreeMemberRoleText\": {\r
+
+    \                                        \"\\\\$\": \"familyTree[3].attributes.OrganizationDetail[0].value.MemberRole[&2].value\"\r
+
+    \                                      }\r
+
+    \                                    }\r
+
+    \                                  }\r
+
+    \                                },\r
+
+    \                                \"Location\": {\r
+
+    \                                  \"PrimaryAddress\": {\r
+
+    \                                    \"StreetAddressLine\": {\r
+
+    \                                      \"0\": {\r
+
+    \                                        \"LineText\": \"familyTree[3].attributes.Addresses[0].value.AddressLine1[].value\"\r
+
+    \                                      },\r
+
+    \                                      \"1\": {\r
+
+    \                                        \"LineText\": \"familyTree[3].attributes.Addresses[0].value.AddressLine2[].value\"\r
+
+    \                                      },\r
+
+    \                                      \"#Shipping\": \"familyTree[3].attributes.Addresses[0].value.AddressType[].value\",\r
+
+    \                                      \"#true\": \"familyTree[3].attributes.Addresses[0].value.Primary[].value\",\r
+
+    \                                      \"@(1,PostalCode)\": \"familyTree[3].attributes.Addresses[0].value.PostalCode[].value\",\r
+
+    \                                      \"@(1,PrimaryTownName)\": \"familyTree[3].attributes.Addresses[0].value.City[].value\",\r
+
+    \                                      \"@(1,TerritoryOfficialName)\": \"familyTree[3].attributes.Addresses[0].value.StateProvince[].value\",\r
+
+    \                                      \"@(1,CountryISOAlpha2Code)\": \"familyTree[3].attributes.Addresses[0].value.Country[].value\"\r
+
+    \                                    }\r
+
+    \                                  }\r
+
+    \                                },\r
+
+    \                                \"Linkage\": {\r
+
+    \                                  \"FamilyTreeMemberOrganization\": {\r
+
+    \                                    \"#DnB Linkage\": \"familyTree[3].attributes.VendorOrganizationType[].value\",\r
+
+    \                                    \"*\": {\r
+
+    \                                      \"LinkageResponseOrganizationCount\": \"count\",\r
+
+    \                                      \"#configuration/entityTypes/Organization\": \"familyTree[4].type\",\r
+
+    \                                      \"#configuration/sources/DnB\": \"familyTree[4].crosswalks[0].type\",\r
+
+    \                                      \"#DnB Linkage\": \"familyTree[4].attributes.VendorOrganizationType[].value\",\r
+
+    \                                      \"#Real Time\": \"familyTree[4].attributes.DnBSource[].value\",\r
+
+    \                                      \"SubjectHeader\": {\r
+
+    \                                        \"DUNSNumber\": [\"familyTree[4].attributes.DUNSNumber[].value\", \"familyTree[4].crosswalks[0].value\"]\r
+
+    \                                      },\r
+
+    \                                      \"OrganizationName\": {\r
+
+    \                                        \"OrganizationPrimaryName\": {\r
+
+    \                                          \"OrganizationName\": {\r
+
+    \                                            \"\\\\$\": \"familyTree[4].attributes.Name[].value\"\r
+
+    \                                          }\r
+
+    \                                        },\r
+
+    \                                        \"TradeStyleName\": {\r
+
+    \                                          \"*\": {\r
+
+    \                                            \"OrganizationName\": {\r
+
+    \                                              \"\\\\$\": \"familyTree[4].attributes.TradeStyleName[&2].value.OrganizationName[].value\"\r
+
+    \                                            }\r
+
+    \                                          }\r
+
+    \                                        }\r
+
+    \                                      },\r
+
+    \                                      \"OrganizationDetail\": {\r
+
+    \                                        \"StandaloneOrganizationIndicator\": \"familyTree[4].attributes.OrganizationDetail[0].value.Standalone[].value\",\r
+
+    \                                        \"FamilyTreeMemberRole\": {\r
+
+    \                                          \"*\": {\r
+
+    \                                            \"FamilyTreeMemberRoleText\": {\r
+
+    \                                              \"\\\\$\": \"familyTree[4].attributes.OrganizationDetail[0].value.MemberRole[&2].value\"\r
+
+    \                                            }\r
+
+    \                                          }\r
+
+    \                                        }\r
+
+    \                                      },\r
+
+    \                                      \"Location\": {\r
+
+    \                                        \"PrimaryAddress\": {\r
+
+    \                                          \"StreetAddressLine\": {\r
+
+    \                                            \"0\": {\r
+
+    \                                              \"LineText\": \"familyTree[4].attributes.Addresses[0].value.AddressLine1[].value\"\r
+
+    \                                            },\r
+
+    \                                            \"1\": {\r
+
+    \                                              \"LineText\": \"familyTree[4].attributes.Addresses[0].value.AddressLine2[].value\"\r
+
+    \                                            },\r
+
+    \                                            \"#Shipping\": \"familyTree[4].attributes.Addresses[0].value.AddressType[].value\",\r
+
+    \                                            \"#true\": \"familyTree[4].attributes.Addresses[0].value.Primary[].value\",\r
+
+    \                                            \"@(1,PostalCode)\": \"familyTree[4].attributes.Addresses[0].value.PostalCode[].value\",\r
+
+    \                                            \"@(1,PrimaryTownName)\": \"familyTree[4].attributes.Addresses[0].value.City[].value\",\r
+
+    \                                            \"@(1,TerritoryOfficialName)\": \"familyTree[4].attributes.Addresses[0].value.StateProvince[].value\",\r
+
+    \                                            \"@(1,CountryISOAlpha2Code)\": \"familyTree[4].attributes.Addresses[0].value.Country[].value\"\r
+
+    \                                          }\r
+
+    \                                        }\r
+
+    \                                      },\r
+
+    \                                      \"Linkage\": {\r
+
+    \                                        \"FamilyTreeMemberOrganization\": {\r
+
+    \                                          \"#DnB Linkage\": \"familyTree[4].attributes.VendorOrganizationType[].value\",\r
+
+    \                                          \"*\": {\r
+
+    \                                            \"LinkageResponseOrganizationCount\": \"count\",\r
+
+    \                                            \"#configuration/entityTypes/Organization\": \"familyTree[5].type\",\r
+
+    \                                            \"#configuration/sources/DnB\": \"familyTree[5].crosswalks[0].type\",\r
+
+    \                                            \"#DnB Linkage\": \"familyTree[5].attributes.VendorOrganizationType[].value\",\r
+
+    \                                            \"#Real Time\": \"familyTree[5].attributes.DnBSource[].value\",\r
+
+    \                                            \"SubjectHeader\": {\r
+
+    \                                              \"DUNSNumber\": [\"familyTree[5].attributes.DUNSNumber[].value\", \"familyTree[5].crosswalks[0].value\"]\r
+
+    \                                            },\r
+
+    \                                            \"OrganizationName\": {\r
+
+    \                                              \"OrganizationPrimaryName\": {\r
+
+    \                                                \"OrganizationName\": {\r
+
+    \                                                  \"\\\\$\": \"familyTree[5].attributes.Name[].value\"\r
+
+    \                                                }\r
+
+    \                                              },\r
+
+    \                                              \"TradeStyleName\": {\r
+
+    \                                                \"*\": {\r
+
+    \                                                  \"OrganizationName\": {\r
+
+    \                                                    \"\\\\$\": \"familyTree[5].attributes.TradeStyleName[&2].value.OrganizationName[].value\"\r
+
+    \                                                  }\r
+
+    \                                                }\r
+
+    \                                              }\r
+
+    \                                            },\r
+
+    \                                            \"OrganizationDetail\": {\r
+
+    \                                              \"StandaloneOrganizationIndicator\": \"familyTree[5].attributes.OrganizationDetail[0].value.Standalone[].value\",\r
+
+    \                                              \"FamilyTreeMemberRole\": {\r
+
+    \                                                \"*\": {\r
+
+    \                                                  \"FamilyTreeMemberRoleText\": {\r
+
+    \                                                    \"\\\\$\": \"familyTree[5].attributes.OrganizationDetail[0].value.MemberRole[&2].value\"\r
+
+    \                                                  }\r
+
+    \                                                }\r
+
+    \                                              }\r
+
+    \                                            },\r
+
+    \                                            \"Location\": {\r
+
+    \                                              \"PrimaryAddress\": {\r
+
+    \                                                \"StreetAddressLine\": {\r
+
+    \                                                  \"0\": {\r
+
+    \                                                    \"LineText\": \"familyTree[5].attributes.Addresses[0].value.AddressLine1[].value\"\r
+
+    \                                                  },\r
+
+    \                                                  \"1\": {\r
+
+    \                                                    \"LineText\": \"familyTree[5].attributes.Addresses[0].value.AddressLine2[].value\"\r
+
+    \                                                  },\r
+
+    \                                                  \"#Shipping\": \"familyTree[5].attributes.Addresses[0].value.AddressType[].value\",\r
+
+    \                                                  \"#true\": \"familyTree[5].attributes.Addresses[0].value.Primary[].value\",\r
+
+    \                                                  \"@(1,PostalCode)\": \"familyTree[5].attributes.Addresses[0].value.PostalCode[].value\",\r
+
+    \                                                  \"@(1,PrimaryTownName)\": \"familyTree[5].attributes.Addresses[0].value.City[].value\",\r
+
+    \                                                  \"@(1,TerritoryOfficialName)\": \"familyTree[5].attributes.Addresses[0].value.StateProvince[].value\",\r
+
+    \                                                  \"@(1,CountryISOAlpha2Code)\": \"familyTree[5].attributes.Addresses[0].value.Country[].value\"\r
+
+    \                                                }\r
+
+    \                                              }\r
+
+    \                                            },\r
+
+    \                                            \"Linkage\": {\r
+
+    \                                              \"FamilyTreeMemberOrganization\": {\r
+
+    \                                                \"#DnB Linkage\": \"familyTree[5].attributes.VendorOrganizationType[].value\",\r
+
+    \                                                \"*\": {\r
+
+    \                                                  \"LinkageResponseOrganizationCount\": \"count\",\r
+
+    \                                                  \"#configuration/entityTypes/Organization\": \"familyTree[6].type\",\r
+
+    \                                                  \"#configuration/sources/DnB\": \"familyTree[6].crosswalks[0].type\",\r
+
+    \                                                  \"#DnB Linkage\": \"familyTree[6].attributes.VendorOrganizationType[].value\",\r
+
+    \                                                  \"#Real Time\": \"familyTree[6].attributes.DnBSource[].value\",\r
+
+    \                                                  \"SubjectHeader\": {\r
+
+    \                                                    \"DUNSNumber\": [\"familyTree[6].attributes.DUNSNumber[].value\", \"familyTree[6].crosswalks[0].value\"]\r
+
+    \                                                  },\r
+
+    \                                                  \"OrganizationName\": {\r
+
+    \                                                    \"OrganizationPrimaryName\": {\r
+
+    \                                                      \"OrganizationName\": {\r
+
+    \                                                        \"\\\\$\": \"familyTree[6].attributes.Name[].value\"\r
+
+    \                                                      }\r
+
+    \                                                    },\r
+
+    \                                                    \"TradeStyleName\": {\r
+
+    \                                                      \"*\": {\r
+
+    \                                                        \"OrganizationName\": {\r
+
+    \                                                          \"\\\\$\": \"familyTree[6].attributes.TradeStyleName[&2].value.OrganizationName[].value\"\r
+
+    \                                                        }\r
+
+    \                                                      }\r
+
+    \                                                    }\r
+
+    \                                                  },\r
+
+    \                                                  \"OrganizationDetail\": {\r
+
+    \                                                    \"StandaloneOrganizationIndicator\": \"familyTree[6].attributes.OrganizationDetail[0].value.Standalone[].value\",\r
+
+    \                                                    \"FamilyTreeMemberRole\": {\r
+
+    \                                                      \"*\": {\r
+
+    \                                                        \"FamilyTreeMemberRoleText\": {\r
+
+    \                                                          \"\\\\$\": \"familyTree[6].attributes.OrganizationDetail[0].value.MemberRole[&2].value\"\r
+
+    \                                                        }\r
+
+    \                                                      }\r
+
+    \                                                    }\r
+
+    \                                                  },\r
+
+    \                                                  \"Location\": {\r
+
+    \                                                    \"PrimaryAddress\": {\r
+
+    \                                                      \"StreetAddressLine\": {\r
+
+    \                                                        \"0\": {\r
+
+    \                                                          \"LineText\": \"familyTree[6].attributes.Addresses[0].value.AddressLine1[].value\"\r
+
+    \                                                        },\r
+
+    \                                                        \"1\": {\r
+
+    \                                                          \"LineText\": \"familyTree[6].attributes.Addresses[0].value.AddressLine2[].value\"\r
+
+    \                                                        },\r
+
+    \                                                        \"#Shipping\": \"familyTree[6].attributes.Addresses[0].value.AddressType[].value\",\r
+
+    \                                                        \"#true\": \"familyTree[6].attributes.Addresses[0].value.Primary[].value\",\r
+
+    \                                                        \"@(1,PostalCode)\": \"familyTree[6].attributes.Addresses[0].value.PostalCode[].value\",\r
+
+    \                                                        \"@(1,PrimaryTownName)\": \"familyTree[6].attributes.Addresses[0].value.City[].value\",\r
+
+    \                                                        \"@(1,TerritoryOfficialName)\": \"familyTree[6].attributes.Addresses[0].value.StateProvince[].value\",\r
+
+    \                                                        \"@(1,CountryISOAlpha2Code)\": \"familyTree[6].attributes.Addresses[0].value.Country[].value\"\r
+
+    \                                                      }\r
+
+    \                                                    }\r
+
+    \                                                  },\r
+
+    \                                                  \"Linkage\": {\r
+
+    \                                                    \"FamilyTreeMemberOrganization\": {\r
+
+    \                                                      \"#DnB Linkage\": \"familyTree[6].attributes.VendorOrganizationType[].value\",\r
+
+    \                                                      \"*\": {\r
+
+    \                                                        \"LinkageResponseOrganizationCount\": \"count\",\r
+
+    \                                                        \"#configuration/entityTypes/Organization\": \"familyTree[7].type\",\r
+
+    \                                                        \"#configuration/sources/DnB\": \"familyTree[7].crosswalks[0].type\",\r
+
+    \                                                        \"#DnB Linkage\": \"familyTree[7].attributes.VendorOrganizationType[].value\",\r
+
+    \                                                        \"#Real Time\": \"familyTree[7].attributes.DnBSource[].value\",\r
+
+    \                                                        \"SubjectHeader\": {\r
+
+    \                                                          \"DUNSNumber\": [\"familyTree[7].attributes.DUNSNumber[].value\", \"familyTree[7].crosswalks[0].value\"]\r
+
+    \                                                        },\r
+
+    \                                                        \"OrganizationName\": {\r
+
+    \                                                          \"OrganizationPrimaryName\": {\r
+
+    \                                                            \"OrganizationName\": {\r
+
+    \                                                              \"\\\\$\": \"familyTree[7].attributes.Name[].value\"\r
+
+    \                                                            }\r
+
+    \                                                          },\r
+
+    \                                                          \"TradeStyleName\": {\r
+
+    \                                                            \"*\": {\r
+
+    \                                                              \"OrganizationName\": {\r
+
+    \                                                                \"\\\\$\": \"familyTree[7].attributes.TradeStyleName[&2].value.OrganizationName[].value\"\r
+
+    \                                                              }\r
+
+    \                                                            }\r
+
+    \                                                          }\r
+
+    \                                                        },\r
+
+    \                                                        \"OrganizationDetail\": {\r
+
+    \                                                          \"StandaloneOrganizationIndicator\": \"familyTree[7].attributes.OrganizationDetail[0].value.Standalone[].value\",\r
+
+    \                                                          \"FamilyTreeMemberRole\": {\r
+
+    \                                                            \"*\": {\r
+
+    \                                                              \"FamilyTreeMemberRoleText\": {\r
+
+    \                                                                \"\\\\$\": \"familyTree[7].attributes.OrganizationDetail[0].value.MemberRole[&2].value\"\r
+
+    \                                                              }\r
+
+    \                                                            }\r
+
+    \                                                          }\r
+
+    \                                                        },\r
+
+    \                                                        \"Location\": {\r
+
+    \                                                          \"PrimaryAddress\": {\r
+
+    \                                                            \"StreetAddressLine\": {\r
+
+    \                                                              \"0\": {\r
+
+    \                                                                \"LineText\": \"familyTree[7].attributes.Addresses[0].value.AddressLine1[].value\"\r
+
+    \                                                              },\r
+
+    \                                                              \"1\": {\r
+
+    \                                                                \"LineText\": \"familyTree[7].attributes.Addresses[0].value.AddressLine2[].value\"\r
+
+    \                                                              },\r
+
+    \                                                              \"#Shipping\": \"familyTree[7].attributes.Addresses[0].value.AddressType[].value\",\r
+
+    \                                                              \"#true\": \"familyTree[7].attributes.Addresses[0].value.Primary[].value\",\r
+
+    \                                                              \"@(1,PostalCode)\": \"familyTree[7].attributes.Addresses[0].value.PostalCode[].value\",\r
+
+    \                                                              \"@(1,PrimaryTownName)\": \"familyTree[7].attributes.Addresses[0].value.City[].value\",\r
+
+    \                                                              \"@(1,TerritoryOfficialName)\": \"familyTree[7].attributes.Addresses[0].value.StateProvince[].value\",\r
+
+    \                                                              \"@(1,CountryISOAlpha2Code)\": \"familyTree[7].attributes.Addresses[0].value.Country[].value\"\r
+
+    \                                                            }\r
+
+    \                                                          }\r
+
+    \                                                        },\r
+
+    \                                                        \"Linkage\": {\r
+
+    \                                                          \"FamilyTreeMemberOrganization\": {\r
+
+    \                                                            \"#DnB Linkage\": \"familyTree[7].attributes.VendorOrganizationType[].value\",\r
+
+    \                                                            \"*\": {\r
+
+    \                                                              \"LinkageResponseOrganizationCount\": \"count\",\r
+
+    \                                                              \"#configuration/entityTypes/Organization\": \"familyTree[8].type\",\r
+
+    \                                                              \"#configuration/sources/DnB\": \"familyTree[8].crosswalks[0].type\",\r
+
+    \                                                              \"#DnB Linkage\": \"familyTree[8].attributes.VendorOrganizationType[].value\",\r
+
+    \                                                              \"#Real Time\": \"familyTree[8].attributes.DnBSource[].value\",\r
+
+    \                                                              \"SubjectHeader\": {\r
+
+    \                                                                \"DUNSNumber\": [\"familyTree[8].attributes.DUNSNumber[].value\", \"familyTree[8].crosswalks[0].value\"]\r
+
+    \                                                              },\r
+
+    \                                                              \"OrganizationName\": {\r
+
+    \                                                                \"OrganizationPrimaryName\": {\r
+
+    \                                                                  \"OrganizationName\": {\r
+
+    \                                                                    \"\\\\$\": \"familyTree[8].attributes.Name[].value\"\r
+
+    \                                                                  }\r
+
+    \                                                                },\r
+
+    \                                                                \"TradeStyleName\": {\r
+
+    \                                                                  \"*\": {\r
+
+    \                                                                    \"OrganizationName\": {\r
+
+    \                                                                      \"\\\\$\": \"familyTree[8].attributes.TradeStyleName[&2].value.OrganizationName[].value\"\r
+
+    \                                                                    }\r
+
+    \                                                                  }\r
+
+    \                                                                }\r
+
+    \                                                              },\r
+
+    \                                                              \"OrganizationDetail\": {\r
+
+    \                                                                \"StandaloneOrganizationIndicator\": \"familyTree[8].attributes.OrganizationDetail[0].value.Standalone[].value\",\r
+
+    \                                                                \"FamilyTreeMemberRole\": {\r
+
+    \                                                                  \"*\": {\r
+
+    \                                                                    \"FamilyTreeMemberRoleText\": {\r
+
+    \                                                                      \"\\\\$\": \"familyTree[8].attributes.OrganizationDetail[0].value.MemberRole[&2].value\"\r
+
+    \                                                                    }\r
+
+    \                                                                  }\r
+
+    \                                                                }\r
+
+    \                                                              },\r
+
+    \                                                              \"Location\": {\r
+
+    \                                                                \"PrimaryAddress\": {\r
+
+    \                                                                  \"StreetAddressLine\": {\r
+
+    \                                                                    \"0\": {\r
+
+    \                                                                      \"LineText\": \"familyTree[8].attributes.Addresses[0].value.AddressLine1[].value\"\r
+
+    \                                                                    },\r
+
+    \                                                                    \"1\": {\r
+
+    \                                                                      \"LineText\": \"familyTree[8].attributes.Addresses[0].value.AddressLine2[].value\"\r
+
+    \                                                                    },\r
+
+    \                                                                    \"#Shipping\": \"familyTree[8].attributes.Addresses[0].value.AddressType[].value\",\r
+
+    \                                                                    \"#true\": \"familyTree[8].attributes.Addresses[0].value.Primary[].value\",\r
+
+    \                                                                    \"@(1,PostalCode)\": \"familyTree[8].attributes.Addresses[0].value.PostalCode[].value\",\r
+
+    \                                                                    \"@(1,PrimaryTownName)\": \"familyTree[8].attributes.Addresses[0].value.City[].value\",\r
+
+    \                                                                    \"@(1,TerritoryOfficialName)\": \"familyTree[8].attributes.Addresses[0].value.StateProvince[].value\",\r
+
+    \                                                                    \"@(1,CountryISOAlpha2Code)\": \"familyTree[8].attributes.Addresses[0].value.Country[].value\"\r
+
+    \                                                                  }\r
+
+    \                                                                }\r
+
+    \                                                              },\r
+
+    \                                                              \"Linkage\": {\r
+
+    \                                                                \"FamilyTreeMemberOrganization\": {\r
+
+    \                                                                  \"#DnB Linkage\": \"familyTree[8].attributes.VendorOrganizationType[].value\",\r
+
+    \                                                                  \"*\": {\r
+
+    \                                                                    \"LinkageResponseOrganizationCount\": \"count\",\r
+
+    \                                                                    \"#configuration/entityTypes/Organization\": \"familyTree[9].type\",\r
+
+    \                                                                    \"#configuration/sources/DnB\": \"familyTree[9].crosswalks[0].type\",\r
+
+    \                                                                    \"#DnB Linkage\": \"familyTree[9].attributes.VendorOrganizationType[].value\",\r
+
+    \                                                                    \"#Real Time\": \"familyTree[9].attributes.DnBSource[].value\",\r
+
+    \                                                                    \"SubjectHeader\": {\r
+
+    \                                                                      \"DUNSNumber\": [\"familyTree[9].attributes.DUNSNumber[].value\", \"familyTree[9].crosswalks[0].value\"]\r
+
+    \                                                                    },\r
+
+    \                                                                    \"OrganizationName\": {\r
+
+    \                                                                      \"OrganizationPrimaryName\": {\r
+
+    \                                                                        \"OrganizationName\": {\r
+
+    \                                                                          \"\\\\$\": \"familyTree[9].attributes.Name[].value\"\r
+
+    \                                                                        }\r
+
+    \                                                                      },\r
+
+    \                                                                      \"TradeStyleName\": {\r
+
+    \                                                                        \"*\": {\r
+
+    \                                                                          \"OrganizationName\": {\r
+
+    \                                                                            \"\\\\$\": \"familyTree[9].attributes.TradeStyleName[&2].value.OrganizationName[].value\"\r
+
+    \                                                                          }\r
+
+    \                                                                        }\r
+
+    \                                                                      }\r
+
+    \                                                                    },\r
+
+    \                                                                    \"OrganizationDetail\": {\r
+
+    \                                                                      \"StandaloneOrganizationIndicator\": \"familyTree[9].attributes.OrganizationDetail[0].value.Standalone[].value\",\r
+
+    \                                                                      \"FamilyTreeMemberRole\": {\r
+
+    \                                                                        \"*\": {\r
+
+    \                                                                          \"FamilyTreeMemberRoleText\": {\r
+
+    \                                                                            \"\\\\$\": \"familyTree[9].attributes.OrganizationDetail[0].value.MemberRole[&2].value\"\r
+
+    \                                                                          }\r
+
+    \                                                                        }\r
+
+    \                                                                      }\r
+
+    \                                                                    },\r
+
+    \                                                                    \"Location\": {\r
+
+    \                                                                      \"PrimaryAddress\": {\r
+
+    \                                                                        \"StreetAddressLine\": {\r
+
+    \                                                                          \"0\": {\r
+
+    \                                                                            \"LineText\": \"familyTree[9].attributes.Addresses[0].value.AddressLine1[].value\"\r
+
+    \                                                                          },\r
+
+    \                                                                          \"1\": {\r
+
+    \                                                                            \"LineText\": \"familyTree[9].attributes.Addresses[0].value.AddressLine2[].value\"\r
+
+    \                                                                          },\r
+
+    \                                                                          \"#Shipping\": \"familyTree[9].attributes.Addresses[0].value.AddressType[].value\",\r
+
+    \                                                                          \"#true\": \"familyTree[9].attributes.Addresses[0].value.Primary[].value\",\r
+
+    \                                                                          \"@(1,PostalCode)\": \"familyTree[9].attributes.Addresses[0].value.PostalCode[].value\",\r
+
+    \                                                                          \"@(1,PrimaryTownName)\": \"familyTree[9].attributes.Addresses[0].value.City[].value\",\r
+
+    \                                                                          \"@(1,TerritoryOfficialName)\": \"familyTree[9].attributes.Addresses[0].value.StateProvince[].value\",\r
+
+    \                                                                          \"@(1,CountryISOAlpha2Code)\": \"familyTree[9].attributes.Addresses[0].value.Country[].value\"\r
+
+    \                                                                        }\r
+
+    \                                                                      }\r
+
+    \                                                                    }\r
+
+    \                                                                  }\r
+
+    \                                                                }\r
+
+    \                                                              }\r
+
+    \                                                            }\r
+
+    \                                                          }\r
+
+    \                                                        }\r
+
+    \                                                      }\r
+
+    \                                                    }\r
+
+    \                                                  }\r
+
+    \                                                }\r
+
+    \                                              }\r
+
+    \                                            }\r
+
+    \                                          }\r
+
+    \                                        }\r
+
+    \                                      }\r
+
+    \                                    }\r
+
+    \                                  }\r
+
+    \                                }\r
+
+    \                              }\r
+
+    \                            }\r
+
+    \                          }\r
+
+    \                        }\r
+
+    \                      }\r
+
+    \                    }\r
+
+    \                  }\r
+
+    \                }\r
+
+    \              }\r
+
+    \            }\r
+
+    \          }\r
+
+    \        }\r
+
+    \      }\r
+
+    \    }\r
+
+    \  }\r
+
+    ]"
+order: 1000

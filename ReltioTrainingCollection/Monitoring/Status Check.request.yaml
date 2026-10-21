@@ -1,0 +1,7 @@
+$kind: http-request
+url: https://{{env}}.reltio.com/status
+method: GET
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+order: 1000

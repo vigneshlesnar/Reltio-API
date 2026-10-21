@@ -1,0 +1,8 @@
+$kind: http-request
+description: "[https://docs.reltio.com/entitiesapi/deleteentity.html](https://docs.reltio.com/entitiesapi/deleteentity.html)"
+url: "{{tenantURL}}/entities/<entityID>"
+method: DELETE
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+order: 11000

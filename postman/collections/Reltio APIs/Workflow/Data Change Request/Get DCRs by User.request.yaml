@@ -1,0 +1,10 @@
+$kind: http-request
+url: '{{tenantURL}}/changeRequests/_total?filter=equals(createdBy,"az-fr-spain")&select=uri'
+method: GET
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+queryParams:
+  filter: equals(createdBy,"az-fr-spain")
+  select: uri
+order: 4000

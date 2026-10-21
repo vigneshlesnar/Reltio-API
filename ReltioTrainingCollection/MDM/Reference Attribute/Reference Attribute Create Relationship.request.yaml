@@ -1,0 +1,102 @@
+$kind: http-request
+url: "{{tenantURL}}/entities?options=partialOverride"
+method: POST
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+queryParams:
+  options: partialOverride
+body:
+  type: text
+  content: "[\r
+
+    \  {\r
+
+    \    \"type\": \"configuration/entityTypes/Contact\",\r
+
+    \    \"attributes\": {\r
+
+    \      \"Product\": [\r
+
+    \        {\r
+
+    \          \"value\": {\r
+
+    \            \"Status\": [\r
+
+    \              {\r
+
+    \                \"value\": \"Active\"\r
+
+    \              }\r
+
+    \            ],\r
+
+    \            \"purchaseDate\": [\r
+
+    \              {\r
+
+    \                \"value\": \"2019-03-15\"\r
+
+    \              }\r
+
+    \            ]\r
+
+    \          },\r
+
+    \          \"refEntity\": {\r
+
+    \            \"crosswalks\": [\r
+
+    \              {\r
+
+    \                \"type\": \"configuration/sources/CRM\",\r
+
+    \                \"value\": \"PRD_1000300\",\r
+
+    \                \"dataProvider\": true\r
+
+    \              }\r
+
+    \            ]\r
+
+    \          },\r
+
+    \          \"refRelation\": {\r
+
+    \            \"crosswalks\": [\r
+
+    \              {\r
+
+    \                \"type\": \"configuration/sources/CRM\",\r
+
+    \                \"value\": \"CON_PRD_1000300\"\r
+
+    \              }\r
+
+    \            ]\r
+
+    \          }\r
+
+    \        }\r
+
+    \      ]\r
+
+    \    },\r
+
+    \    \"crosswalks\": [\r
+
+    \      {\r
+
+    \        \"type\": \"configuration/sources/CRM\",\r
+
+    \        \"value\": \"CON_1000300\"\r
+
+    \      }\r
+
+    \    ]\r
+
+    \  }\r
+
+    ]"
+order: 2000

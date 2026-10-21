@@ -1,0 +1,27 @@
+$kind: http-request
+url: https://auth.reltio.com/oauth/token
+method: POST
+headers:
+  Authorization: Basic {{userClient}}
+  Content-Type: application/json
+body:
+  type: formdata
+  content:
+    - type: text
+      key: username
+      value: "{{username}}"
+    - type: text
+      key: password
+      value: "{{password}}"
+    - type: text
+      key: grant_type
+      value: password
+auth:
+  type: noauth
+scripts:
+  - type: afterResponse
+    code: |-
+      var jsonData = pm.response.json();
+      pm.environment.set("state_token", jsonData.state_token.token);
+    language: text/javascript
+order: 1000

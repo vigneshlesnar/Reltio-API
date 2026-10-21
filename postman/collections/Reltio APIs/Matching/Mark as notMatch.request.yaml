@@ -1,0 +1,10 @@
+$kind: http-request
+description: "[https://docs.reltio.com/matchesapi/markentityasnotmatch.html](https://docs.reltio.com/matchesapi/markentityasnotmatch.html)"
+url: "{{tenantURL}}/entities/1CmigQsW/_notMatch?uri=entities/1CmizKzU"
+method: GET
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+queryParams:
+  uri: entities/1CmizKzU
+order: 5000

@@ -1,0 +1,1029 @@
+$kind: http-request
+description: "[https://docs.reltio.com/dnbapi/dnbsaveenrichmentmapping.html](https://docs.reltio.com/dnbapi/dnbsaveenrichmentmapping.html)"
+url: "{{dnbconnector}}/config/profiles/{{dnbProfile}}/mappings/enrichment?plus=true"
+method: POST
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/jon
+queryParams:
+  - key: product
+    value: cmpelk
+    disabled: true
+  - key: plus
+    value: "true"
+body:
+  type: json
+  content: "[\r
+
+    \  {\r
+
+    \    \"operation\": \"shift\",\r
+
+    \    \"spec\": {\r
+
+    \      \"OrderProductResponse\": {\r
+
+    \        \"OrderProductResponseDetail\": {\r
+
+    \          \"Product\": {\r
+
+    \            \"Organization\": {\r
+
+    \              \"#configuration/sources/DnB\": \"[4].crosswalks[0].type\",\r
+
+    \              \"#Real Time\": \"[4].attributes.DnBSource[].value\",\r
+
+    \              \"SubjectHeader\": {\r
+
+    \                \"DUNSNumber\": [\r
+
+    \                  \"[4].attributes.DUNSNumber[].value\",\r
+
+    \                  \"[4].crosswalks[0].value\"\r
+
+    \                ],\r
+
+    \                \"MarketabilityIndicator\": \"[4].attributes.MarketabilityIndicator[].value\",\r
+
+    \                \"LastUpdateDate\": {\r
+
+    \                  \"\\\\$\": \"[4].attributes.DnBLastUpdateDate[].value\"\r
+
+    \                },\r
+
+    \                \"OrganizationSummaryText\": \"[4].attributes.OrganizationSummaryText[].value\",\r
+
+    \                \"TransferDUNSNumberRegistration\": {\r
+
+    \                  \"*\": {\r
+
+    \                    \"TransferDate\": {\r
+
+    \                      \"\\\\$\": \"[4].attributes.PriorDUNSNUmber[&2].value.TransferDate[].value\"\r
+
+    \                    },\r
+
+    \                    \"TransferredFromDUNSNumber\": \"[4].attributes.PriorDUNSNUmber[&1].value.TransferredFromDUNSNumber[].value\",\r
+
+    \                    \"TransferredToDUNSNumber\": \"[4].attributes.PriorDUNSNUmber[&1].value.TransferredToDUNSNumber[].value\",\r
+
+    \                    \"TransferReasonText\": {\r
+
+    \                      \"*\": {\r
+
+    \                        \"\\\\@DNBCodeValue\": \"[4].attributes.PriorDUNSNUmber[&3].value.TransferReasonCode[&1].value\",\r
+
+    \                        \"\\\\$\": \"[4].attributes.PriorDUNSNUmber[&3].value.TransferReasonText[&1].value\"\r
+
+    \                      }\r
+
+    \                    }\r
+
+    \                  }\r
+
+    \                }\r
+
+    \              },\r
+
+    \              \"OrganizationName\": {\r
+
+    \                \"OrganizationPrimaryName\": {\r
+
+    \                  \"*\": {\r
+
+    \                    \"OrganizationName\": {\r
+
+    \                      \"\\\\$\": \"[4].attributes.Name[].value\"\r
+
+    \                    }\r
+
+    \                  }\r
+
+    \                },\r
+
+    \                \"TradeStyleName\": {\r
+
+    \                  \"*\": {\r
+
+    \                    \"OrganizationName\": {\r
+
+    \                      \"\\\\$\": \"[4].attributes.TradeStyleName[&2].value.OrganizationName[].value\"\r
+
+    \                    }\r
+
+    \                  }\r
+
+    \                },\r
+
+    \                \"FormerOrganizationPrimaryName\": {\r
+
+    \                  \"*\": {\r
+
+    \                    \"OrganizationName\": {\r
+
+    \                      \"\\\\$\": \"[4].attributes.TradeStyleName[&2].value.FormerOrganizationPrimaryName[].value\"\r
+
+    \                    }\r
+
+    \                  }\r
+
+    \                }\r
+
+    \              },\r
+
+    \              \"Telecommunication\": {\r
+
+    \                \"TelephoneNumber\": {\r
+
+    \                  \"*\": {\r
+
+    \                    \"TelecommunicationNumber\":  \"[5].sa.Phone[&1].value.Number[].value\",\r
+
+    \                    \"UnreachableIndicator\":     \"[5].sa.Phone[&1].value.Unreachable[].value\",\r
+
+    \                    \"InternationalDialingCode\": \"[5].sa.Phone[&1].value.CountryCode[].value\",\r
+
+    \                    \"#Phone\":                   \"[5].sa.Phone[&1].value.Type[].value\",\r
+
+    \                    \"#true\":                    \"[5].sa.Phone[&1].value.PrimaryPhoneFlag[].value\"\r
+
+    \                  }\r
+
+    \                },\r
+
+    \                \"FacsimileNumber\": {\r
+
+    \                  \"*\": {\r
+
+    \                    \"TelecommunicationNumber\":  \"[5].ma.Phone[&1].value.Number[].value\",\r
+
+    \                    \"UnreachableIndicator\":     \"[5].ma.Phone[&1].value.Unreachable[].value\",\r
+
+    \                    \"InternationalDialingCode\": \"[5].ma.Phone[&1].value.CountryCode[].value\",\r
+
+    \                    \"#Fax\":                     \"[5].ma.Phone[&1].value.Type[].value\",\r
+
+    \                    \"#true\":                    \"[5].ma.Phone[&1].value.PrimaryPhoneFlag[].value\"\r
+
+    \                  }\r
+
+    \                },\r
+
+    \                \"WebPageAddress\": {\r
+
+    \                  \"*\": {\r
+
+    \                    \"TelecommunicationAddress\": {\r
+
+    \                      \"@\": \"[4].attributes.WebsiteURL[].value\"\r
+
+    \                    }\r
+
+    \                  }\r
+
+    \                }\r
+
+    \              },\r
+
+    \              \"OrganizationDetail\": {\r
+
+    \                \"StandaloneOrganizationIndicator\": \"[4].attributes.OrganizationDetail[0].value.Standalone[].value\",\r
+
+    \                \"FamilyTreeMemberRole\": {\r
+
+    \                  \"*\": {\r
+
+    \                    \"FamilyTreeMemberRoleText\": {\r
+
+    \                      \"\\\\$\": \"[4].attributes.OrganizationDetail[0].value.MemberRole[&2].value\"\r
+
+    \                    }\r
+
+    \                  }\r
+
+    \                },\r
+
+    \                \"ControlOwnershipDate\": {\r
+
+    \                  \"\\\\$\": \"[4].attributes.OrganizationDetail[0].value.OwnershipDate[].value\"\r
+
+    \                },\r
+
+    \                \"ControlOwnershipTypeText\": {\r
+
+    \                  \"\\\\$\": \"[4].attributes.OrganizationDetail[0].value.OwnershipType[].value\"\r
+
+    \                },\r
+
+    \                \"BoneyardOrganizationIndicator\": \"[4].attributes.OrganizationDetail[0].value.BoneyardOrganization[].value\",\r
+
+    \                \"OperatingStatusText\": {\r
+
+    \                  \"\\\\$\": \"[4].attributes.OrganizationDetail[0].value.OperatingStatus[].value\"\r
+
+    \                },\r
+
+    \                \"OrganizationStartYear\": \"[4].attributes.OrganizationDetail[0].value.StartYear[].value\",\r
+
+    \                \"FranchiseOperationTypeText\": {\r
+
+    \                  \"\\\\$\": \"[4].attributes.OrganizationDetail[0].value.FranchiseOperationType[].value\"\r
+
+    \                },\r
+
+    \                // not verified yet\r
+
+    \                \"OperatingStatusComment\": {\r
+
+    \                  \"OperatingStatusFreeFormComment\": {\r
+
+    \                    \"\\\\$\": \"[4].attributes.OrganizationDetail[0].value.OperatingStatusComment[].value\"\r
+
+    \                  }\r
+
+    \                }\r
+
+    \              },\r
+
+    \              \"Location\": {\r
+
+    \                \"PrimaryAddress\": {\r
+
+    \                  \"*\": {\r
+
+    \                    \"StreetAddressLine\": {\r
+
+    \                      \"0\": {\r
+
+    \                        \"LineText\":                       \"[5].sa.Addresses[&3].value.AddressLine1[].value\"\r
+
+    \                      },\r
+
+    \                      \"1\": {\r
+
+    \                        \"LineText\":                       \"[5].sa.Addresses[&3].value.AddressLine2[].value\"\r
+
+    \                      },\r
+
+    \                      \"#Shipping\":                        \"[5].sa.Addresses[&2].value.AddressType[].value\",\r
+
+    \                      \"#true\":                            \"[5].sa.Addresses[&2].value.Primary[].value\",\r
+
+    \                      \"@(1,PostalCode)\":                  \"[5].sa.Addresses[&2].value.PostalCode[].value\",\r
+
+    \                      \"@(1,PrimaryTownName)\":             \"[5].sa.Addresses[&2].value.City[].value\",\r
+
+    \                      \"@(1,TerritoryOfficialName)\":       \"[5].sa.Addresses[&2].value.StateProvince[].value\",\r
+
+    \                      \"@(1,LatitudeMeasurement)\":         \"[5].sa.Addresses[&2].value.DnBLatitude[].value\",\r
+
+    \                      \"@(1,LongitudeMeasurement)\":        \"[5].sa.Addresses[&2].value.DnBLongitude[].value\",\r
+
+    \                      \"@(1,RegisteredAddressIndicator)\":  \"[5].sa.Addresses[&2].value.Registered[].value\",\r
+
+    \                      \"@(1,ResidentialAddressIndicator)\": \"[5].sa.Addresses[&2].value.Residential[].value\",\r
+
+    \                      \"@(1,CountryISOAlpha2Code)\":        \"[5].sa.Addresses[&2].value.Country[].value\"\r
+
+    \                    },\r
+
+    \                    \"PremisesDetail\": {\r
+
+    \                      \"*\": {\r
+
+    \                        \"PremisesAreaMeasurement\": \"[4].attributes.FacilitySizeInSqFeet[].value\"\r
+
+    \                      }\r
+
+    \                    }\r
+
+    \                  }\r
+
+    \                },\r
+
+    \                \"MailingAddress\": {\r
+
+    \                  \"*\": {\r
+
+    \                    \"StreetAddressLine\": {\r
+
+    \                      \"0\": {\r
+
+    \                        \"LineText\":                       \"[5].ma.Addresses[&3].value.AddressLine1[].value\"\r
+
+    \                      },\r
+
+    \                      \"1\": {\r
+
+    \                        \"LineText\":                       \"[5].ma.Addresses[&3].value.AddressLine2[].value\"\r
+
+    \                      },\r
+
+    \                      \"#Mailing\":                         \"[5].ma.Addresses[&2].value.AddressType[].value\",\r
+
+    \                      \"@(1,PostalCode)\":                  \"[5].ma.Addresses[&2].value.PostalCode[].value\",\r
+
+    \                      \"@(1,PrimaryTownName)\":             \"[5].ma.Addresses[&2].value.City[].value\",\r
+
+    \                      \"@(1,TerritoryOfficialName)\":       \"[5].ma.Addresses[&2].value.StateProvince[].value\",\r
+
+    \                      \"@(1,LatitudeMeasurement)\":         \"[5].ma.Addresses[&2].value.DnBLatitude[].value\",\r
+
+    \                      \"@(1,LongitudeMeasurement)\":        \"[5].ma.Addresses[&2].value.DnBLongitude[].value\",\r
+
+    \                      \"@(1,RegisteredAddressIndicator)\":  \"[5].ma.Addresses[&2].value.Registered[].value\",\r
+
+    \                      \"@(1,ResidentialAddressIndicator)\": \"[5].ma.Addresses[&2].value.Residential[].value\",\r
+
+    \                      \"@(1,CountryISOAlpha2Code)\":        \"[5].ma.Addresses[&2].value.Country[].value\"\r
+
+    \                    },\r
+
+    \                    \"PremisesDetail\": {\r
+
+    \                      \"*\": {\r
+
+    \                        \"PremisesAreaMeasurement\": \"[4].attributes.FacilitySizeInSqFeet[].value\"\r
+
+    \                      }\r
+
+    \                    }\r
+
+    \                  }\r
+
+    \                }\r
+
+    \              },\r
+
+    \              \"Financial\": {\r
+
+    \                \"KeyFinancialFiguresOverview\": {\r
+
+    \                  \"*\": {\r
+
+    \                    \"StatementHeaderDetails\": {\r
+
+    \                      \"FinancialStatementToDate\": {\r
+
+    \                        \"\\\\$\": \"[4].attributes.KeyFinancialFiguresOverview[&3].value.FinancialStatementToDate[].value\"\r
+
+    \                      },\r
+
+    \                      \"FinancialPeriodDuration\": \"[4].attributes.KeyFinancialFiguresOverview[&2].value.FinancialPeriodDuration[].value\"\r
+
+    \                    },\r
+
+    \                    \"SalesRevenueAmount\": {\r
+
+    \                      \"*\": {\r
+
+    \                        \"\\\\@CurrencyISOAlpha3Code\": \"[4].attributes.KeyFinancialFiguresOverview[&3].value.SalesRevenueCurrencyCode[&1].value\",\r
+
+    \                        \"\\\\@ReliabilityText\": \"[4].attributes.KeyFinancialFiguresOverview[&3].value.SalesRevenueReliabilityCode[&1].value\",\r
+
+    \                        \"\\\\@UnitOfSize\": \"[4].attributes.KeyFinancialFiguresOverview[&3].value.SalesRevenueUnitOfSize[&1].value\",\r
+
+    \                        \"\\\\$\": \"[4].attributes.KeyFinancialFiguresOverview[&3].value.SalesRevenueAmount[&1].value\"\r
+
+    \                      }\r
+
+    \                    },\r
+
+    \                    \"ProfitOrLossAmount\": {\r
+
+    \                      \"*\": {\r
+
+    \                        \"\\\\$\": \"[4].attributes.KeyFinancialFiguresOverview[&3].value.ProfitOrLossAmount[].value\"\r
+
+    \                      }\r
+
+    \                    },\r
+
+    \                    \"ProfitOrLossGrowthRate\": \"[4].attributes.KeyFinancialFiguresOverview[&1].value.ProfitOrLossGrowthRate[].value\",\r
+
+    \                    \"SalesTurnoverGrowthRate\": \"[4].attributes.KeyFinancialFiguresOverview[&1].value.SalesTurnoverGrowthRate[].value\"\r
+
+    \                  }\r
+
+    \                }\r
+
+    \              },\r
+
+    \              \"IndustryCode\": {\r
+
+    \                \"IndustryCode\": {\r
+
+    \                  \"*\": {\r
+
+    \                    \"IndustryCode\": {\r
+
+    \                      \"\\\\$\": \"[4].attributes.IndustryCode[&2].value.IndustryCode[].value\"\r
+
+    \                    },\r
+
+    \                    \"\\\\@DNBCodeValue\": \"[4].attributes.IndustryCode[&1].value.DNBCode[].value\",\r
+
+    \                    \"\\\\@TypeText\": \"[4].attributes.IndustryCode[&1].value.Type[].value\",\r
+
+    \                    \"IndustryCodeDescription\": {\r
+
+    \                      \"*\": {\r
+
+    \                        \"\\\\$\": \"[4].attributes.IndustryCode[&3].value.IndustryCodeDescription[].value\",\r
+
+    \                        \"\\\\@LanguageCode\": \"[4].attributes.IndustryCode[&3].value.IndustryCodeLanguageCode[].value\",\r
+
+    \                        \"\\\\@WritingScriptISOAlpha4Code\": \"[4].attributes.IndustryCode[&3].value.IndustryCodeWritingScript[].value\"\r
+
+    \                      }\r
+
+    \                    },\r
+
+    \                    \"DisplaySequence\": \"[4].attributes.IndustryCode[&1].value.DisplaySequence[].value\",\r
+
+    \                    \"SalesPercentage\": \"[4].attributes.IndustryCode[&1].value.SalesPercentage[].value\"\r
+
+    \                  }\r
+
+    \                }\r
+
+    \              },\r
+
+    \              \"ActivitiesAndOperations\": {\r
+
+    \                \"OperationsText\": \"[4].attributes.ActivitiesAndOperations[0].value.OperationsText[].value\",\r
+
+    \                \"LineOfBusinessDetails\": {\r
+
+    \                  \"*\": {\r
+
+    \                    \"LineOfBusinessDescription\": {\r
+
+    \                      \"\\\\$\": \"[4].attributes.ActivitiesAndOperations[0].value.LineOfBusinessDescription[].value\",\r
+
+    \                      \"\\\\@LanguageCode\": \"[4].attributes.ActivitiesAndOperations[0].value.LanguageCode[].value\"\r
+
+    \                    }\r
+
+    \                  }\r
+
+    \                },\r
+
+    \                \"ImportDetails\": {\r
+
+    \                  \"ImportIndicator\": \"[4].attributes.ActivitiesAndOperations[0].value.ImportIndicator[].value\"\r
+
+    \                },\r
+
+    \                \"ExportDetails\": {\r
+
+    \                  \"ExportIndicator\": \"[4].attributes.ActivitiesAndOperations[0].value.ExportIndicator[].value\"\r
+
+    \                },\r
+
+    \                \"SubjectIsAgentDetails\": {\r
+
+    \                  \"AgentIndicator\": \"[4].attributes.ActivitiesAndOperations[0].value.AgentIndicator[].value\"\r
+
+    \                }\r
+
+    \              },\r
+
+    \              \"EmployeeFigures\": {\r
+
+    \                \"IndividualEntityEmployeeDetails\": {\r
+
+    \                  // TODI - remove it\r
+
+    \                  \"IndividualEmployeeFiguresDate\": \"[4].attributes.EmployeeDetails[0].value.IndividualEmployeeFiguresDate[].value\",\r
+
+    \                  \"TotalEmployeeQuantity\": \"[4].attributes.EmployeeDetails[0].value.IndividualTotalEmployeeQuantity[].value\",\r
+
+    \                  \"ReliabilityText\": {\r
+
+    \                    \"\\\\$\": \"[4].attributes.EmployeeDetails[0].value.IndividualReliabilityText[].value\"\r
+
+    \                  }\r
+
+    \                },\r
+
+    \                // not tested yet\r
+
+    \                \"IndividualEntityEmployeeDetailsHistory\": {\r
+
+    \                  \"TotalEmployeeQuantity\": \"[4].attributes.EmployeeDetails[0].value.TotalEmployeeQuantity[].value\",\r
+
+    \                  \"ReliabilityText\": {\r
+
+    \                    \"\\\\$\": \"[4].attributes.EmployeeDetails[0].value.TotalEmployeeReliability[].value\"\r
+
+    \                  }\r
+
+    \                }\r
+
+    \              },\r
+
+    \              \"RegisteredDetail\": {\r
+
+    \                \"LegalFormDetails\": {\r
+
+    \                  \"LegalFormText\": {\r
+
+    \                    \"\\\\$\": \"[4].attributes.LegalStatusCode[].value\"\r
+
+    \                  }\r
+
+    \                },\r
+
+    \                \"OrganizationIdentificationNumberDetail\": {\r
+
+    \                  \"*\": {\r
+
+    \                    \"\\\\@TypeText\": \"[4].attributes.Identifiers[&1].value.Type[].value\",\r
+
+    \                    \"OrganizationIdentificationNumber\": \"[4].attributes.Identifiers[&1].value.ID[].value\"\r
+
+    \                  }\r
+
+    \                }\r
+
+    \              },\r
+
+    \              \"Linkage\": {\r
+
+    \                \"GlobalUltimateOrganization\": {\r
+
+    \                  \"#configuration/entityTypes/Organization\": \"[0].type\",\r
+
+    \                  \"#configuration/sources/DnB\": \"[0].crosswalks[0].type\",\r
+
+    \                  \"#DnB Linkage\": \"[0].attributes.VendorOrganizationType[].value\",\r
+
+    \                  \"#Real Time\": \"[0].attributes.DnBSource[].value\",\r
+
+    \                  \"DUNSNumber\": [\r
+
+    \                    \"[0].attributes.DUNSNumber[].value\",\r
+
+    \                    \"[4].attributes.DUNSHierarchy[0].value.GlobalUltimateDUNS[].value\",\r
+
+    \                    \"[0].crosswalks[0].value\"\r
+
+    \                  ],\r
+
+    \                  \"OrganizationPrimaryName\": {\r
+
+    \                    \"*\": {\r
+
+    \                      \"OrganizationName\": {\r
+
+    \                        \"\\\\$\": [\r
+
+    \                          \"[0].attributes.Name[&2].value\",\r
+
+    \                          \"[4].attributes.DUNSHierarchy[0].value.GlobalUltimateOrganization[&2].value\"\r
+
+    \                        ]\r
+
+    \                      }\r
+
+    \                    }\r
+
+    \                  },\r
+
+    \                  \"PrimaryAddress\": {\r
+
+    \                    \"*\": {\r
+
+    \                      \"StreetAddressLine\": {\r
+
+    \                        \"0\": {\r
+
+    \                          \"LineText\":                 \"[0].attributes.Addresses[&3].value.AddressLine1[].value\"\r
+
+    \                        },\r
+
+    \                        \"1\": {\r
+
+    \                          \"LineText\":                 \"[0].attributes.Addresses[&3].value.AddressLine2[].value\"\r
+
+    \                        },\r
+
+    \                        \"#Shipping\":                  \"[0].attributes.Addresses[&2].value.AddressType[].value\",\r
+
+    \                        \"#true\":                      \"[0].attributes.Addresses[&2].value.Primary[].value\",\r
+
+    \                        \"@(1,PostalCode)\":            \"[0].attributes.Addresses[&2].value.PostalCode[].value\",\r
+
+    \                        \"@(1,PrimaryTownName)\":       \"[0].attributes.Addresses[&2].value.City[].value\",\r
+
+    \                        \"@(1,TerritoryOfficialName)\": \"[0].attributes.Addresses[&2].value.StateProvince[].value\",\r
+
+    \                        \"@(1,CountryISOAlpha2Code)\":  \"[0].attributes.Addresses[&2].value.Country[].value\"\r
+
+    \                      }\r
+
+    \                    }\r
+
+    \                  }\r
+
+    \                },\r
+
+    \                \"DomesticUltimateOrganization\": {\r
+
+    \                  \"#configuration/entityTypes/Organization\": \"[1].type\",\r
+
+    \                  \"#configuration/sources/DnB\": \"[1].crosswalks[0].type\",\r
+
+    \                  \"#DnB Linkage\": \"[1].attributes.VendorOrganizationType[].value\",\r
+
+    \                  \"#Real Time\": \"[1].attributes.DnBSource[].value\",\r
+
+    \                  \"DUNSNumber\": [\r
+
+    \                    \"[1].attributes.DUNSNumber[].value\",\r
+
+    \                    \"[4].attributes.DUNSHierarchy[0].value.DomesticUltimateDUNS[].value\",\r
+
+    \                    \"[1].crosswalks[0].value\"\r
+
+    \                  ],\r
+
+    \                  \"OrganizationPrimaryName\": {\r
+
+    \                    \"*\": {\r
+
+    \                      \"OrganizationName\": {\r
+
+    \                        \"\\\\$\": [\r
+
+    \                          \"[1].attributes.Name[&2].value\",\r
+
+    \                          \"[4].attributes.DUNSHierarchy[0].value.DomesticUltimateOrganization[&2].value\"\r
+
+    \                        ]\r
+
+    \                      }\r
+
+    \                    }\r
+
+    \                  },\r
+
+    \                  \"PrimaryAddress\": {\r
+
+    \                    \"*\": {\r
+
+    \                      \"StreetAddressLine\": {\r
+
+    \                        \"0\": {\r
+
+    \                          \"LineText\":                 \"[1].attributes.Addresses[&3].value.AddressLine1[].value\"\r
+
+    \                        },\r
+
+    \                        \"1\": {\r
+
+    \                          \"LineText\":                 \"[1].attributes.Addresses[&3].value.AddressLine2[].value\"\r
+
+    \                        },\r
+
+    \                        \"#Shipping\":                  \"[1].attributes.Addresses[&2].value.AddressType[].value\",\r
+
+    \                        \"#true\":                      \"[1].attributes.Addresses[&2].value.Primary[].value\",\r
+
+    \                        \"@(1,PostalCode)\":            \"[1].attributes.Addresses[&2].value.PostalCode[].value\",\r
+
+    \                        \"@(1,PrimaryTownName)\":       \"[1].attributes.Addresses[&2].value.City[].value\",\r
+
+    \                        \"@(1,TerritoryOfficialName)\": \"[1].attributes.Addresses[&2].value.StateProvince[].value\",\r
+
+    \                        \"@(1,CountryISOAlpha2Code)\":  \"[1].attributes.Addresses[&2].value.Country[].value\"\r
+
+    \                      }\r
+
+    \                    }\r
+
+    \                  }\r
+
+    \                },\r
+
+    \                \"HeadquartersOrganization\": {\r
+
+    \                  \"#configuration/entityTypes/Organization\": \"[2].type\",\r
+
+    \                  \"#configuration/sources/DnB\": \"[2].crosswalks[0].type\",\r
+
+    \                  \"#DnB Linkage\": \"[2].attributes.VendorOrganizationType[].value\",\r
+
+    \                  \"#Real Time\": \"[2].attributes.DnBSource[].value\",\r
+
+    \                  \"DUNSNumber\": [\r
+
+    \                    \"[2].attributes.DUNSNumber[].value\",\r
+
+    \                    \"[4].attributes.DUNSHierarchy[0].value.HeadquartersDUNS[].value\",\r
+
+    \                    \"[2].crosswalks[0].value\"\r
+
+    \                  ],\r
+
+    \                  \"OrganizationPrimaryName\": {\r
+
+    \                    \"*\": {\r
+
+    \                      \"OrganizationName\": {\r
+
+    \                        \"\\\\$\": [\r
+
+    \                          \"[2].attributes.Name[&2].value\",\r
+
+    \                          \"[4].attributes.DUNSHierarchy[0].value.HeadquartersOrganization[&2].value\"\r
+
+    \                        ]\r
+
+    \                      }\r
+
+    \                    }\r
+
+    \                  },\r
+
+    \                  \"PrimaryAddress\": {\r
+
+    \                    \"*\": {\r
+
+    \                      \"StreetAddressLine\": {\r
+
+    \                        \"0\": {\r
+
+    \                          \"LineText\":                 \"[2].attributes.Addresses[&3].value.AddressLine1[].value\"\r
+
+    \                        },\r
+
+    \                        \"1\": {\r
+
+    \                          \"LineText\":                 \"[2].attributes.Addresses[&3].value.AddressLine2[].value\"\r
+
+    \                        },\r
+
+    \                        \"#Shipping\":                  \"[2].attributes.Addresses[&2].value.AddressType[].value\",\r
+
+    \                        \"#true\":                      \"[2].attributes.Addresses[&2].value.Primary[].value\",\r
+
+    \                        \"@(1,PostalCode)\":            \"[2].attributes.Addresses[&2].value.PostalCode[].value\",\r
+
+    \                        \"@(1,PrimaryTownName)\":       \"[2].attributes.Addresses[&2].value.City[].value\",\r
+
+    \                        \"@(1,TerritoryOfficialName)\": \"[2].attributes.Addresses[&2].value.StateProvince[].value\",\r
+
+    \                        \"@(1,CountryISOAlpha2Code)\":  \"[2].attributes.Addresses[&2].value.Country[].value\"\r
+
+    \                      }\r
+
+    \                    }\r
+
+    \                  }\r
+
+    \                },\r
+
+    \                \"ParentOrganization\": {\r
+
+    \                  \"#configuration/entityTypes/Organization\": \"[3].type\",\r
+
+    \                  \"#configuration/sources/DnB\": \"[3].crosswalks[0].type\",\r
+
+    \                  \"#DnB Linkage\": \"[3].attributes.VendorOrganizationType[].value\",\r
+
+    \                  \"#Real Time\": \"[3].attributes.DnBSource[].value\",\r
+
+    \                  \"DUNSNumber\": [\r
+
+    \                    \"[3].attributes.DUNSNumber[].value\",\r
+
+    \                    \"[4].attributes.DUNSHierarchy[0].value.ParentDUNS[].value\",\r
+
+    \                    \"[3].crosswalks[0].value\"\r
+
+    \                  ],\r
+
+    \                  \"OrganizationPrimaryName\": {\r
+
+    \                    \"*\": {\r
+
+    \                      \"OrganizationName\": {\r
+
+    \                        \"\\\\$\": [\r
+
+    \                          \"[3].attributes.Name[&2].value\",\r
+
+    \                          \"[4].attributes.DUNSHierarchy[0].value.ParentOrganization[&2].value\"\r
+
+    \                        ]\r
+
+    \                      }\r
+
+    \                    }\r
+
+    \                  },\r
+
+    \                  \"PrimaryAddress\": {\r
+
+    \                    \"*\": {\r
+
+    \                      \"StreetAddressLine\": {\r
+
+    \                        \"0\": {\r
+
+    \                          \"LineText\":                 \"[3].attributes.Addresses[&3].value.AddressLine1[].value\"\r
+
+    \                        },\r
+
+    \                        \"1\": {\r
+
+    \                          \"LineText\":                 \"[3].attributes.Addresses[&3].value.AddressLine2[].value\"\r
+
+    \                        },\r
+
+    \                        \"#Shipping\":                  \"[3].attributes.Addresses[&2].value.AddressType[].value\",\r
+
+    \                        \"#true\":                      \"[3].attributes.Addresses[&2].value.Primary[].value\",\r
+
+    \                        \"@(1,PostalCode)\":            \"[3].attributes.Addresses[&2].value.PostalCode[].value\",\r
+
+    \                        \"@(1,PrimaryTownName)\":       \"[3].attributes.Addresses[&2].value.City[].value\",\r
+
+    \                        \"@(1,TerritoryOfficialName)\": \"[3].attributes.Addresses[&2].value.StateProvince[].value\",\r
+
+    \                        \"@(1,CountryISOAlpha2Code)\":  \"[3].attributes.Addresses[&2].value.Country[].value\"\r
+
+    \                      }\r
+
+    \                    }\r
+
+    \                  }\r
+
+    \                }\r
+
+    \              }\r
+
+    \            }\r
+
+    \          }\r
+
+    \        }\r
+
+    \      }\r
+
+    \    }\r
+
+    \  },\r
+
+    \  {\r
+
+    \    \"operation\": \"shift\",\r
+
+    \    \"spec\": {\r
+
+    \      \"0\": {\r
+
+    \        \"type\": \"[0].type\",\r
+
+    \        \"crosswalks\": \"[0].crosswalks\",\r
+
+    \        \"attributes\": \"[0].attributes\"\r
+
+    \      },\r
+
+    \      \"1\": {\r
+
+    \        \"type\": \"[1].type\",\r
+
+    \        \"crosswalks\": \"[1].crosswalks\",\r
+
+    \        \"attributes\": \"[1].attributes\"\r
+
+    \      },\r
+
+    \      \"2\": {\r
+
+    \        \"type\": \"[2].type\",\r
+
+    \        \"crosswalks\": \"[2].crosswalks\",\r
+
+    \        \"attributes\": \"[2].attributes\"\r
+
+    \      },\r
+
+    \      \"3\": {\r
+
+    \        \"type\": \"[3].type\",\r
+
+    \        \"crosswalks\": \"[3].crosswalks\",\r
+
+    \        \"attributes\": \"[3].attributes\"\r
+
+    \      },\r
+
+    \      \"4\": {\r
+
+    \        \"type\": \"[4].type\",\r
+
+    \        \"crosswalks\": \"[4].crosswalks\",\r
+
+    \        \"attributes\": \"[4].attributes\"\r
+
+    \      },\r
+
+    \      \"5\": {\r
+
+    \        \"ma\": {\r
+
+    \          \"Addresses\": {\r
+
+    \            \"*\": \"[4].attributes.Addresses[]\"\r
+
+    \          },\r
+
+    \          \"Phone\": {\r
+
+    \            \"*\": \"[4].attributes.Phone[]\"\r
+
+    \          }\r
+
+    \        },\r
+
+    \        \"sa\": {\r
+
+    \          \"Addresses\": {\r
+
+    \            \"*\": \"[4].attributes.Addresses[]\"\r
+
+    \          },\r
+
+    \          \"Phone\": {\r
+
+    \            \"*\": \"[4].attributes.Phone[]\"\r
+
+    \          }\r
+
+    \        }\r
+
+    \      }\r
+
+    \    }\r
+
+    \  },\r
+
+    \  {\r
+
+    \    \"operation\": \"com.reltio.account360.connector.dnb.mappings.SetFinancialStatementToDate\"\r
+
+    \  },\r
+
+    \  // section below doesn't make useful actions - only replaces null to { \"attributes\": {}} - empty organization\r
+
+    \  // why? - we need it in case when only one organization here and other are null - in this case last modifier will\r
+
+    \  // create array[] instead of array[array[]] and crash conversion to List<List<>>\r
+
+    \  {\r
+
+    \    \"operation\": \"modify-overwrite-beta\",\r
+
+    \    \"spec\": {\r
+
+    \      \"*\": {\r
+
+    \        \"attributes\": {\r
+
+    \          \"SomeValue\": {\r
+
+    \            \"*\": {\r
+
+    \              \"value\": \"&\"\r
+
+    \            }\r
+
+    \          }\r
+
+    \        }\r
+
+    \      }\r
+
+    \    }\r
+
+    \  },\r
+
+    \  {\r
+
+    \    \"operation\": \"shift\",\r
+
+    \    \"spec\": {\r
+
+    \      \"*\": \"[0]\"\r
+
+    \    }\r
+
+    \  }\r
+
+    ]"
+order: 1000

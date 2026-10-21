@@ -1,0 +1,11 @@
+$kind: http-request
+url: "{{workflowURL}}{{tenant}}/tasks"
+method: POST
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+  EnvironmentURL: "{{environment}}"
+body:
+  type: text
+  content: "{}"
+order: 8000

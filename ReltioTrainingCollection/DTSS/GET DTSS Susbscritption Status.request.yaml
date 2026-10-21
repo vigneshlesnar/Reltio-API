@@ -1,0 +1,7 @@
+$kind: http-request
+url: "{{serviceURL}}/dtss/tasks/2405dbed-ce60-448d-a8a6-4cce1e8ee580"
+method: GET
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{accessToken}}
+order: 21000

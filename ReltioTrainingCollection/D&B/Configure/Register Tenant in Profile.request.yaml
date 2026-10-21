@@ -1,0 +1,13 @@
+$kind: http-request
+url: "{{dnbconnector}}/config/profiles/{{dnbProfile}}/tenants"
+method: POST
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+  EnvironmentUrl: https://dev.reltio.com
+  tenantID: "{{tenant}}"
+  tenantIdDt: dataTenantIDHere
+body:
+  type: text
+  content: ""
+order: 5000

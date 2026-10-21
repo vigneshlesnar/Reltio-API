@@ -1,0 +1,26 @@
+$kind: http-request
+url: "{{serviceURL}}/dtss/subscription/task"
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{accessToken}}
+body:
+  type: text
+  content: |-
+    {
+      "@type": "periodic",
+      "period": "*/5 * * * *",
+      "matchUrls": [
+        "configuration/entityTypes/HCP/matchGroups/PersonByNPISuspect",
+        "configuration/entityTypes/HCO/matchGroups/OrgByNameAddressLineExact",
+        "configuration/entityTypes/HCO/matchGroups/OrgByNameCityAndState"
+      ],
+      "entity_type": 
+        "configuration/entityTypes/HCP",
+        "configuration/entityTypes/HCO"
+      
+      "dataTenant": "hmcyo4cu",
+      "customerTenant": "jas88zr17",
+      "status": "SCHEDULED"
+    }
+order: 7000

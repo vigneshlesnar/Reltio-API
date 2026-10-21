@@ -1,0 +1,4 @@
+$kind: http-request
+url: https://361-dataloader.reltio.com/dataloader/api/{{mdmTenant}}/_mapping/<mappingId>
+method: GET
+order: 4000

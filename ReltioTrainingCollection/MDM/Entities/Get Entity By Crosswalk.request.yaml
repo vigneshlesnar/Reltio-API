@@ -1,0 +1,10 @@
+$kind: http-request
+url: "{{tenantURL}}/entities/_byCrosswalk/ORG_1000038?type=Finance"
+method: GET
+queryParams:
+  - key: type
+    value: Finance
+  - key: sourceTable
+    value: sourceTableNameHere
+    disabled: true
+order: 2000

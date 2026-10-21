@@ -1,0 +1,12 @@
+$kind: http-request
+url: "{{tenantURL}}/rebuildpmcounters?tenantId={{tenant}}"
+method: POST
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+queryParams:
+  tenantId: "{{tenant}}"
+body:
+  type: text
+  content: ""
+order: 2000

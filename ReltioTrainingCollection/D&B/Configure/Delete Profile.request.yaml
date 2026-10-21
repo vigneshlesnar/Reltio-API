@@ -1,0 +1,9 @@
+$kind: http-request
+url: "{{dnbconnector}}/config/profiles/{{dnbProfile}}"
+method: DELETE
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+  EnvironmentUrl: https://dev.reltio.com/
+  tenantID: "{{tenant}}"
+order: 3000

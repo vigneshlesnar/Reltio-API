@@ -1,0 +1,10 @@
+$kind: http-request
+url: https://{{env}}.reltio.com/jobs/{{mdmTenant}}/tasks/<taskID>
+method: POST
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+body:
+  type: text
+  content: ""
+order: 3000

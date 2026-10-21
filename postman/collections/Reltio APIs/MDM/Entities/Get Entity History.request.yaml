@@ -1,0 +1,12 @@
+$kind: http-request
+description: "[https://docs.reltio.com/entitiesapi/entityhistory.html](https://docs.reltio.com/entitiesapi/entityhistory.html)"
+url: "{{tenantURL}}/entities/<entityID>/_changes"
+method: GET
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+queryParams:
+  - key: valuesToCopy
+    value: ""
+    disabled: true
+order: 8000

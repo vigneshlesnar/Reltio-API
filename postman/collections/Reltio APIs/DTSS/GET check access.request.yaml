@@ -1,0 +1,22 @@
+$kind: http-request
+url: https://dtss.sitrlt.com/dtss/access/_check
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{accessToken}}
+  CustomerTenant: ReGeNcE8Ue3rNg1
+body:
+  type: text
+  content: |-
+    [
+        {
+            "endpoint":"/entities/",
+        "httpMethod":"GET"
+        },
+        {
+                    "endpoint":"/entities/_total",
+        "httpMethod":"GET"
+            
+        }
+        ]
+order: 17000

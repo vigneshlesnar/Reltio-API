@@ -1,0 +1,11 @@
+$kind: http-request
+url: "{{tenantURL}}/esCassandraConsistencyCheck?entityType=HCP&maxResultsToStore=1000&compareVersions=false"
+method: POST
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+queryParams:
+  entityType: HCP
+  maxResultsToStore: "1000"
+  compareVersions: "false"
+order: 7000

@@ -1,0 +1,38 @@
+$kind: http-request
+url: https://dtss.sitrlt.com/dtss/tenants/customerTenants
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{accessToken}}
+body:
+  type: text
+  content: "  {\r
+
+    \    \"tenant_id\": {\r
+
+    \      \"id\": \"ReGeNcE8Ue3rNg1\"\r
+
+    \    },\r
+
+    \    \"client_id\": \"reltio_ui\",\r
+
+    \  \"client_password\": \"makita\",\r
+
+    \    \"oauth_end_point_url\": \"https://auth.sitrlt.com/oauth/token\",\r
+
+    \    \"oauth_user\": \"admin\",\r
+
+    \  \"oauth_password\": \"cRucibLe\",\r
+
+    \    \"api_url\": \"https://api.sitrlt.com/reltio/api\",\r
+
+    \    \"cassandra_host\": \"ip-10-49-128-142.us-west-2.compute.internal,ip-10-49-129-243.us-west-2.compute.internal,ip-10-49-129-244.us-west-2.compute.internal,ip-10-49-129-245.us-west-2.compute.internal\",\r
+
+    \    \"cassandra_keyspace\": \"SitRltSystemKeyspace\",\r
+
+    \    \"cassandra_cluster\": \"sit-rlt-data\",\r
+
+    \    \"cassandra_replication_factor\": 3\r
+
+    \  }"
+order: 6000

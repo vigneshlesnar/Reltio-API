@@ -1,0 +1,4 @@
+$kind: http-request
+url: https://361-dataloader.reltio.com/dataloader/api/{{mdmTenant}}/projects
+method: GET
+order: 1000

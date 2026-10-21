@@ -1,0 +1,15 @@
+$kind: http-request
+url: "{{urlAuth}}/revoke"
+method: POST
+headers:
+  Authorization: Basic {{base64_encoded_credentials}}
+  Content-Type: application/json
+body:
+  type: formdata
+  content:
+    - type: text
+      key: token
+      value: "{{accessToken}}"
+auth:
+  type: noauth
+order: 3000

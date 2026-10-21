@@ -1,0 +1,31 @@
+$kind: http-request
+description: "[https://docs.reltio.com/dnbapi/dnbcheckingsingleentity.html](https://docs.reltio.com/dnbapi/dnbcheckingsingleentity.html)"
+url: "{{dnbconnector}}/dnb/monitoring/registration?entityURI=entities/1BGfXLUR"
+method: GET
+headers:
+  - key: Authorization
+    value: Bearer {{accessToken}}
+  - key: Content-Type
+    value: application/json
+    description: Required
+  - key: EnvironmentUrl
+    value: https://dev.reltio.com
+    description: Required
+  - key: TenantId
+    value: "{{tenant}}"
+    description: Required
+  - key: DnB-User
+    value: ""
+    disabled: true
+  - key: DnB-Password
+    value: ""
+    disabled: true
+  - key: DnB-Token
+    value: ""
+    disabled: true
+  - key: DnB-Registration
+    value: ""
+    description: Required
+queryParams:
+  entityURI: entities/1BGfXLUR
+order: 3000

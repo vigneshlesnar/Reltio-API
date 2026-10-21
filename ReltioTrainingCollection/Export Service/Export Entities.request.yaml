@@ -1,0 +1,30 @@
+$kind: http-request
+url: https://{{env}}.reltio.com/jobs/export/{{mdmTenant}}/entities?dateFormat=readable&filter=contains(attributes.Name, '*el*')
+method: POST
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+queryParams:
+  - key: select
+    value: attributes.Name,attribute.Addresses.City,createdTime
+    disabled: true
+  - key: fileFormat
+    value: json
+    disabled: true
+  - key: dateFormat
+    value: readable
+  - key: filter
+    value: contains(attributes.Name, '*el*')
+  - key: ovOnly
+    value: "true"
+    disabled: true
+body:
+  type: text
+  content: |-
+    {
+        "includeType": [
+            "configuration/entityTypes/Contact"
+        ],
+        "ovOnly": true
+    }
+order: 1000

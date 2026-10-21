@@ -1,0 +1,15 @@
+$kind: http-request
+url: "{{tenantURL}}/entities?filter=equals(type,'configuration/entityTypes/Contact')&max=10"
+method: GET
+queryParams:
+  - key: filter
+    value: equals(type,'configuration/entityTypes/Contact')
+  - key: max
+    value: "10"
+  - key: offset
+    value: "50"
+    disabled: true
+  - key: select
+    value: uri,label
+    disabled: true
+order: 3000

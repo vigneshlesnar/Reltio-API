@@ -1,0 +1,12 @@
+$kind: http-request
+url: "{{serviceURL}}/dtss/entities/_unmerge"
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{accessToken}}
+  CustomerTenant: QfVESdQdeQRl0an
+  DataTenant: SJjoUBvuQp9pFwb
+body:
+  type: text
+  content: '[{"value":"entities/7PEoctf","type":"configuration/sources/DT_AMA"}]'
+order: 19000

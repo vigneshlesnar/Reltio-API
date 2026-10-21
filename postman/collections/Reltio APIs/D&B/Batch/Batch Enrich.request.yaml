@@ -1,0 +1,83 @@
+$kind: http-request
+description: "[https://docs.reltio.com/dnbapi/dnbbatcreatebatchjob.html](https://docs.reltio.com/dnbapi/dnbbatcreatebatchjob.html)"
+url: "{{dnbconnector}}/dnb/batch?plus=true"
+method: POST
+headers:
+  - key: Authorization
+    value: Bearer {{accessToken}}
+  - key: Content-Type
+    value: application/json
+  - key: EnvironmentUrl
+    value: https://dev.reltio.com
+  - key: tenantID
+    value: "{{tenant}}"
+  - key: Reltio-Batch-Type
+    value: put
+  - key: DnB-Ftp
+    value: https://plus.dnb.com
+    disabled: true
+  - key: DnB-Path-Put
+    value: /puts
+    disabled: true
+  - key: DnB-Path-Get
+    value: /gets
+    disabled: true
+  - key: DnB-User
+    value: ""
+    disabled: true
+  - key: DnB-Password
+    value: ""
+    disabled: true
+  - key: Reltio-User
+    value: ""
+    disabled: true
+  - key: Reltio-Password
+    value: ""
+    disabled: true
+  - key: mergeOrgsWithSameDUNS
+    value: "true"
+    disabled: true
+  - key: minConfidenceCode
+    value: "7"
+    disabled: true
+  - key: s3Bucket
+    value: ""
+    disabled: true
+  - key: s3Path
+    value: ""
+    disabled: true
+  - key: awsAccessKey
+    value: ""
+    disabled: true
+  - key: awsSecretKey
+    value: ""
+    disabled: true
+  - key: S3Region
+    value: ""
+    disabled: true
+  - key: waitResponseSeconds
+    value: ""
+    disabled: true
+  - key: cronExpression
+    value: ""
+    disabled: true
+  - key: productId
+    value: ""
+    disabled: true
+  - key: productVersion
+    value: ""
+    disabled: true
+queryParams:
+  plus: "true"
+body:
+  type: text
+  content: |2
+    
+        
+          
+    {
+      "exportTask": {
+          "filter": "equals(type,configuration/entityTypes/Organization) and equals(attributes.Name,'KPMG LLP')"
+        }
+      }
+order: 1000

@@ -1,0 +1,4 @@
+$kind: http-request
+url: "{{toolsURL}}/matching/comparatorClasses"
+method: GET
+order: 8000

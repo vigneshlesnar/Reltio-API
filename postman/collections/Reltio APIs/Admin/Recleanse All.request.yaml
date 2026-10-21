@@ -1,0 +1,11 @@
+$kind: http-request
+url: "{{tenantURL}}/cleanse?entityType=Other&taskPartsCount=6&distributed=true"
+method: POST
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+queryParams:
+  entityType: Other
+  taskPartsCount: "6"
+  distributed: "true"
+order: 11000

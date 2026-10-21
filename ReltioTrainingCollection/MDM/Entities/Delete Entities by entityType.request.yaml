@@ -1,0 +1,13 @@
+$kind: http-request
+description: Command to DELETE all entities by entityType
+url: "{{tenantURL}}/entities?entityType=<ENTITY_TYPE>"
+method: DELETE
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+queryParams:
+  entityType: <ENTITY_TYPE>
+body:
+  type: formdata
+  content: []
+order: 14000

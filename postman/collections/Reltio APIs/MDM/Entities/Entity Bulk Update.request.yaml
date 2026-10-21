@@ -1,0 +1,50 @@
+$kind: http-request
+description: "[https://docs.reltio.com/entitiesapi/bulkattrupdate.html](https://docs.reltio.com/entitiesapi/bulkattrupdate.html)"
+url: "{{tenantURL}}/entities/_update"
+method: POST
+headers:
+  - key: Authorization
+    value: Bearer {{accessToken}}
+  - key: Content-Type
+    value: application/json
+  - key: options
+    value: partialOverride
+    disabled: true
+  - key: ActivityID
+    value: "1234"
+    disabled: true
+queryParams:
+  - key: sendMail
+    value: "false"
+    disabled: true
+body:
+  type: text
+  content: |2
+    
+      {
+        "objects": {
+          "filter": "equals(attrbutes.Name.FirstName, 'Joel')and equals(type, 'configuration/entityTypes/HCP')"
+        },
+        "actions": [
+          {
+            "operation": "DeleteAttribute",
+            "operationParameters": {
+              "attributeURI": "configuration/entityTypes/HCP/attributes/Name"
+            }
+          },
+          {
+            "operation": "AddAttribute",
+            "operationParameters": {
+              "attributeURI": "configuration/entityTypes/HCP/attributes/Name",
+              "attributeValue": {
+                "FirstName": [
+                  {
+                    "value": "Andrew"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+order: 6000

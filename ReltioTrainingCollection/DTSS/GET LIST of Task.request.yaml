@@ -1,0 +1,9 @@
+$kind: http-request
+url: "{{serviceURL}}/dtss/subscription/task"
+method: GET
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{accessToken}}
+  DataTenant: T74szvy2aXewh59
+  CustomerTenant: QfVESdQdeQRl0an
+order: 11000

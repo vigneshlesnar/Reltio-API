@@ -1,0 +1,29 @@
+$kind: http-request
+url: "{{urlAuth}}/token"
+method: POST
+headers:
+  Authorization: Basic {{base64_encoded_credentials}}
+  Content-Type: application/json
+body:
+  type: formdata
+  content:
+    - type: text
+      key: grant_type
+      value: client_credentials
+auth:
+  type: noauth
+scripts:
+  - type: afterResponse
+    code: |-
+      var jsonData = pm.response.json();
+      pm.environment.set("accessToken", jsonData.access_token);
+    language: text/javascript
+  - type: beforeRequest
+    code: |-
+      const clientId = pm.environment.get("client_id");
+      const clientSecret = pm.environment.get("client_secret");
+      const credentials = `${clientId}:${clientSecret}`;
+      const encoded = Buffer.from(credentials).toString("base64");
+      pm.environment.set("base64_encoded_credentials", `${encoded}`);
+    language: text/javascript
+order: 2000

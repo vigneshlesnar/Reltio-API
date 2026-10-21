@@ -1,0 +1,21 @@
+$kind: http-request
+url: "{{toolsURL}}/matching/cleansers/cleanse?tenantId={{mdmTenant}}"
+method: POST
+queryParams:
+  tenantId: "{{mdmTenant}}"
+body:
+  type: json
+  content: |-
+    {
+       "values": [
+           "Isabell",
+           "Bella"
+       ],
+       "cleanser": {
+           "cleanseAdapter": "com.reltio.cleanse.impl.NameDictionaryCleanser",
+           "cleanseAdapterParams": {
+               "dictionary" : "SynonymFirstNamesNA_2020-09-01"
+           }
+       }
+    }
+order: 4000

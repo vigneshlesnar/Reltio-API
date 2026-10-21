@@ -1,0 +1,8 @@
+# Use this workspace to collaborate
+workspace:
+  id: 79896f52-e14d-44db-965c-57def0dffdc2
+
+localResources:
+  collections:
+    - ../ReltioTrainingCollection
+  environments: []

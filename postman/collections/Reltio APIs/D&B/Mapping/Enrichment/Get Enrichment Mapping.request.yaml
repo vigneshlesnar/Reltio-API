@@ -1,0 +1,14 @@
+$kind: http-request
+description: "[https://docs.reltio.com/dnbapi/dnbgetenrichmentmapping.html](https://docs.reltio.com/dnbapi/dnbgetenrichmentmapping.html)"
+url: "{{dnbconnector}}/config/profiles/{{dnbProfile}}/mappings/enrichment?plus=true"
+method: GET
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/jon
+queryParams:
+  - key: product
+    value: cmpelk
+    disabled: true
+  - key: plus
+    value: "true"
+order: 2000

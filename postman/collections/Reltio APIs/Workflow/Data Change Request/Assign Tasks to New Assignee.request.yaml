@@ -1,0 +1,11 @@
+$kind: http-request
+url: "{{workflowURL}}{{tenant}}/tasks/168476"
+method: PUT
+headers:
+  Authorization: Bearer {{accessToken}}
+  Content-Type: application/json
+  EnvironmentURL: "{{environment}}"
+body:
+  type: text
+  content: '{"assignee":"adnan.selak@reltio.com"}'
+order: 3000
